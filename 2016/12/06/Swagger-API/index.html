@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="swagger," />
 
 
 
@@ -84,15 +84,22 @@
 
 
 
-<meta name="description" content="TilKaiのblog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TilKaiのblog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Swagger - A Powerful Interface to your APISwagger常用注解一览及使用@API
+@API: Marks a class as a Swagger resource.
+表示一个开放的API，①value: 定义API声明资源的托管路径，一般与@path具有相同的值，若使用tags属性，则value标记失效；②description: 简短描述API功能，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swagger-API">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/Swagger-API/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
-<meta property="og:description" content="TilKaiのblog">
+<meta property="og:description" content="Swagger - A Powerful Interface to your APISwagger常用注解一览及使用@API
+@API: Marks a class as a Swagger resource.
+表示一个开放的API，①value: 定义API声明资源的托管路径，一般与@path具有相同的值，若使用tags属性，则value标记失效；②description: 简短描述API功能，">
+<meta property="og:updated_time" content="2016-12-06T15:37:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TilKaiのblog">
-<meta name="twitter:description" content="TilKaiのblog">
+<meta name="twitter:title" content="Swagger-API">
+<meta name="twitter:description" content="Swagger - A Powerful Interface to your APISwagger常用注解一览及使用@API
+@API: Marks a class as a Swagger resource.
+表示一个开放的API，①value: 定义API声明资源的托管路径，一般与@path具有相同的值，若使用tags属性，则value标记失效；②description: 简短描述API功能，">
 
 
 
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/Swagger-API/"/>
 
 
 
 
 
-  <title> TilKaiのblog </title>
+  <title> Swagger-API | TilKaiのblog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -147,9 +154,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,9 +233,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -263,10 +268,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/12/06/Swagger-API/" itemprop="url">
-                  Swagger-API
-                </a>
+                Swagger-API
               
             
           </h1>
@@ -315,9 +317,7 @@
       
 
       
-        
-          
-            <h1 id="Swagger-A-Powerful-Interface-to-your-API"><a href="#Swagger-A-Powerful-Interface-to-your-API" class="headerlink" title="Swagger - A Powerful Interface to your API"></a>Swagger - A Powerful Interface to your API</h1><h2 id="Swagger常用注解一览及使用"><a href="#Swagger常用注解一览及使用" class="headerlink" title="Swagger常用注解一览及使用"></a>Swagger常用注解一览及使用</h2><h3 id="API"><a href="#API" class="headerlink" title="@API"></a>@API</h3><blockquote>
+        <h1 id="Swagger-A-Powerful-Interface-to-your-API"><a href="#Swagger-A-Powerful-Interface-to-your-API" class="headerlink" title="Swagger - A Powerful Interface to your API"></a>Swagger - A Powerful Interface to your API</h1><h2 id="Swagger常用注解一览及使用"><a href="#Swagger常用注解一览及使用" class="headerlink" title="Swagger常用注解一览及使用"></a>Swagger常用注解一览及使用</h2><h3 id="API"><a href="#API" class="headerlink" title="@API"></a>@API</h3><blockquote>
 <p><strong><code>@API</code></strong>: Marks a class as a Swagger resource.</p>
 <p>表示一个开放的API，<br>①<strong>value</strong>: 定义API声明资源的托管路径，一般与@path具有相同的值，若使用tags属性，则value标记失效；<br>②<strong>description</strong>: 简短描述API功能，1.5版本不再使用，Default = “”；<br>③<strong>produces</strong>: 指定API输出的MIME(Multipurpose Internet Mail Extensions)类型，value可以为逗号分隔的内容，如<code>produces = &quot;application/json, application/xml&quot;</code>会建议该API Resource生成JSON和XML输出，Default = “”;<br>④<strong>position</strong>: 定义该API Resource在资源清单中显式排顺的顺序，1.5x不再使用，保留作为向前支持，Default = 0;<br>⑤<strong>consumes</strong>: 指定输入，value定义可使用逗号分隔的内容，如<code>consumes = &quot;application/json, application/xml&quot;</code>会建议该API Resource接收JSON和xml类型的输入，Default = “”;<br>⑥<strong>protocols</strong>: 为此资源下的操作设定特定协议，值为字符串，可用逗号分隔设定多个协议，可选值有” http, https, ws, wss”;<br>⑦<strong>authorizations</strong>: 对应操作对象的’security’字段，获取该API Resource所需的授权列表，default = @com.wordnik.swagger.annotations.Authorization(“”);<br>⑧<strong>hidden</strong>: 隐藏该API Resource，实验证明定义在@API中未被使用，而定义在@ApiOperation中时，设置为true可隐藏该方法，Default = false;<br>⑨<strong>tags</strong>: 定义API文档控件的标签列表，用于分组展示，非空值时，覆盖value中的值，数据类型为A String List of tags values;<br>⑩<strong>basePath</strong>: 1.5x不再使用，保留作为向前支持;</p>
 <hr>
@@ -415,37 +415,46 @@
 <h2 id="Swagger-ui使用"><a href="#Swagger-ui使用" class="headerlink" title="Swagger-ui使用"></a>Swagger-ui使用</h2><p><a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="external">项目bootRun后点击此处执行</a></p>
 </blockquote>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/swagger/" rel="tag"># swagger</a>
+          
+        </div>
       
 
       
+
       
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -453,6 +462,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -472,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -519,6 +541,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swagger-A-Powerful-Interface-to-your-API"><span class="nav-number">1.</span> <span class="nav-text">Swagger - A Powerful Interface to your API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Swagger常用注解一览及使用"><span class="nav-number">1.1.</span> <span class="nav-text">Swagger常用注解一览及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">1.1.1.</span> <span class="nav-text">@API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiImplicitParam"><span class="nav-number">1.1.2.</span> <span class="nav-text">@ApiImplicitParam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiImplicitParams"><span class="nav-number">1.1.3.</span> <span class="nav-text">@ApiImplicitParams</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiModel"><span class="nav-number">1.1.4.</span> <span class="nav-text">@ApiModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiModelProperty"><span class="nav-number">1.1.5.</span> <span class="nav-text">@ApiModelProperty</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiOperation"><span class="nav-number">1.1.6.</span> <span class="nav-text">@ApiOperation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiParam"><span class="nav-number">1.1.7.</span> <span class="nav-text">@ApiParam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiResponse"><span class="nav-number">1.1.8.</span> <span class="nav-text">@ApiResponse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApiResponses"><span class="nav-number">1.1.9.</span> <span class="nav-text">@ApiResponses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Authorization"><span class="nav-number">1.1.10.</span> <span class="nav-text">@Authorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AuthorizationScope"><span class="nav-number">1.1.11.</span> <span class="nav-text">@AuthorizationScope</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swagger-ui使用"><span class="nav-number">1.2.</span> <span class="nav-text">Swagger-ui使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -617,6 +655,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
