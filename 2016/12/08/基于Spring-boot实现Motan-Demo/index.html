@@ -84,26 +84,17 @@
 
 
 
-<meta name="description" content="基于Spring boot实现Motan Demo简单描述Motan框架Motan架构包括:
-. 服务提供方Server
-. 服务调用方Client
-. 注册中心Registry流程大致为:Server向Registry注册服务；Client向Registry订阅指定服务;Client获取Registry返回的服务列表后连接Server；Client通过Registry感知Server的状态变更；">
+<meta name="description" content="简单描述Motan框架">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Spring boot实现Motan Demo">
 <meta property="og:url" content="http://yoursite.com/2016/12/08/基于Spring-boot实现Motan-Demo/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
-<meta property="og:description" content="基于Spring boot实现Motan Demo简单描述Motan框架Motan架构包括:
-. 服务提供方Server
-. 服务调用方Client
-. 注册中心Registry流程大致为:Server向Registry注册服务；Client向Registry订阅指定服务;Client获取Registry返回的服务列表后连接Server；Client通过Registry感知Server的状态变更；">
+<meta property="og:description" content="简单描述Motan框架">
 <meta property="og:image" content="http://yoursite.com/images/Motan01.jpg">
-<meta property="og:updated_time" content="2016-12-09T06:55:51.000Z">
+<meta property="og:updated_time" content="2016-12-09T14:08:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Spring boot实现Motan Demo">
-<meta name="twitter:description" content="基于Spring boot实现Motan Demo简单描述Motan框架Motan架构包括:
-. 服务提供方Server
-. 服务调用方Client
-. 注册中心Registry流程大致为:Server向Registry注册服务；Client向Registry订阅指定服务;Client获取Registry返回的服务列表后连接Server；Client通过Registry感知Server的状态变更；">
+<meta name="twitter:description" content="简单描述Motan框架">
 <meta name="twitter:image" content="http://yoursite.com/images/Motan01.jpg">
 
 
@@ -349,7 +340,8 @@
       
 
       
-        <h1 id="基于Spring-boot实现Motan-Demo"><a href="#基于Spring-boot实现Motan-Demo" class="headerlink" title="基于Spring boot实现Motan Demo"></a>基于Spring boot实现Motan Demo</h1><h2 id="简单描述Motan框架"><a href="#简单描述Motan框架" class="headerlink" title="简单描述Motan框架"></a>简单描述Motan框架</h2><p>Motan架构包括:</p>
+        <h2 id="简单描述Motan框架"><a href="#简单描述Motan框架" class="headerlink" title="简单描述Motan框架"></a>简单描述Motan框架</h2><a id="more"></a>
+<p>Motan架构包括:</p>
 <p><1>. 服务提供方<code>Server</code></1></p>
 <p><2>. 服务调用方<code>Client</code></2></p>
 <p><3>. 注册中心<code>Registry</code><br>流程大致为:<br><code>Server</code>向<code>Registry</code>注册服务；<br><code>Client</code>向<code>Registry</code>订阅指定服务;<br><code>Client</code>获取<code>Registry</code>返回的服务列表后连接<code>Server</code>；<br><code>Client</code>通过<code>Registry</code>感知<code>Server</code>的状态变更；<br><img src="images/Motan01.jpg" alt="Motan调用流程"></3></p>
@@ -366,7 +358,7 @@
 <h3 id="返回值类型为BasicServiceConfigBean的bean定义-该方法提供服务暴露或引用时所需要的配置项"><a href="#返回值类型为BasicServiceConfigBean的bean定义-该方法提供服务暴露或引用时所需要的配置项" class="headerlink" title="返回值类型为BasicServiceConfigBean的bean定义,该方法提供服务暴露或引用时所需要的配置项"></a>返回值类型为BasicServiceConfigBean的bean定义,该方法提供服务暴露或引用时所需要的配置项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Bean</div><div class="line">public BasicServiceConfigBean baseServiceConfig() &#123;</div><div class="line">   BasicServiceConfigBean config = new BasicServiceConfigBean();</div><div class="line">   config.setExport(&quot;demoMotan:8002&quot;);</div><div class="line">   config.setGroup(&quot;testgroup&quot;);</div><div class="line">   config.setAccessLog(false);</div><div class="line">   config.setShareChannel(true);</div><div class="line">   config.setModule(&quot;motan-demo-rpc&quot;);</div><div class="line">   config.setApplication(&quot;myMotanDemo&quot;);</div><div class="line">   config.setRegistry(&quot;registryConfig&quot;);</div><div class="line">   return config;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="服务端main方法"><a href="#服务端main方法" class="headerlink" title="服务端main方法"></a>服务端main方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    //System.setProperty(&quot;server.port&quot;, &quot;8081&quot;);</div><div class="line">    ConfigurableApplicationContext context =  SpringApplication.run(SpringBootRpcServerDemo.class, args);</div><div class="line">    //MotanSwitcherUtil.setSwitcherValue(MotanConstants.REGISTRY_HEARTBEAT_SWITCHER, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="客户端端创建服务引用类-服务引用类里定义带有如下返回值的方法"><a href="#客户端端创建服务引用类-服务引用类里定义带有如下返回值的方法" class="headerlink" title="客户端端创建服务引用类,服务引用类里定义带有如下返回值的方法"></a>客户端端创建服务引用类,服务引用类里定义带有如下返回值的方法</h2><h3 id="返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名-1"><a href="#返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名-1" class="headerlink" title="返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名"></a>返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Bean</div><div class="line">public AnnotationBean motanAnnotationBean() &#123;</div><div class="line">    AnnotationBean annotationBean = new AnnotationBean();</div><div class="line">    motanAnnotationBean.setPackage(&quot;com.weibo.motan.demo.client.control&quot;);</div><div class="line">    return motanAnnotationBean;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#35813;&#22788;&#x6307;&#x5b9a;&#x63;&#x6f;&#110;&#x74;&#x72;&#x6f;&#x6c;&#108;&#101;&#x72;&#x5305;&#x2c;&#x89e3;&#26512;&#64;&#x4d;&#x6f;&#116;&#97;&#x6e;&#82;&#x65;&#x66;&#101;&#x72;&#101;&#x72;&#x6ce8;&#35299;&#30340;&#23545;&#x8c61;">&#35813;&#22788;&#x6307;&#x5b9a;&#x63;&#x6f;&#110;&#x74;&#x72;&#x6f;&#x6c;&#108;&#101;&#x72;&#x5305;&#x2c;&#x89e3;&#26512;&#64;&#x4d;&#x6f;&#116;&#97;&#x6e;&#82;&#x65;&#x66;&#101;&#x72;&#101;&#x72;&#x6ce8;&#35299;&#30340;&#23545;&#x8c61;</a></p>
+<p><a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#35813;&#x5904;&#25351;&#23450;&#99;&#111;&#x6e;&#x74;&#114;&#111;&#x6c;&#x6c;&#x65;&#x72;&#x5305;&#x2c;&#35299;&#26512;&#64;&#77;&#x6f;&#116;&#97;&#x6e;&#x52;&#101;&#102;&#101;&#x72;&#101;&#x72;&#x6ce8;&#35299;&#x7684;&#23545;&#x8c61;">&#35813;&#x5904;&#25351;&#23450;&#99;&#111;&#x6e;&#x74;&#114;&#111;&#x6c;&#x6c;&#x65;&#x72;&#x5305;&#x2c;&#35299;&#26512;&#64;&#77;&#x6f;&#116;&#97;&#x6e;&#x52;&#101;&#102;&#101;&#x72;&#101;&#x72;&#x6ce8;&#35299;&#x7684;&#23545;&#x8c61;</a></p>
 <h3 id="返回类型为ProtocolConfigBean的bean定义"><a href="#返回类型为ProtocolConfigBean的bean定义" class="headerlink" title="返回类型为ProtocolConfigBean的bean定义"></a>返回类型为ProtocolConfigBean的bean定义</h3><p>与服务端配置相同即可;</p>
 <h3 id="返回值类型为RegistryConfigBean的bean定义"><a href="#返回值类型为RegistryConfigBean的bean定义" class="headerlink" title="返回值类型为RegistryConfigBean的bean定义"></a>返回值类型为RegistryConfigBean的bean定义</h3><p>与服务端配置相同即可;</p>
 <h3 id="返回值类型为BasicRefererConfigBean的bean定义"><a href="#返回值类型为BasicRefererConfigBean的bean定义" class="headerlink" title="返回值类型为BasicRefererConfigBean的bean定义"></a>返回值类型为BasicRefererConfigBean的bean定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Bean(name = &quot;clientBasicConfig&quot;)</div><div class="line">    public BasicRefererConfigBean baseRefererConfig() &#123;</div><div class="line">        BasicRefererConfigBean config = new BasicRefererConfigBean();</div><div class="line">        config.setProtocol(&quot;demoMotan&quot;);</div><div class="line">        config.setGroup(&quot;motan-demo-rpc&quot;);</div><div class="line">        config.setModule(&quot;motan-demo-rpc&quot;);</div><div class="line">        config.setApplication(&quot;myMotanDemo&quot;);</div><div class="line">        config.setRegistry(&quot;registry&quot;);</div><div class="line">        config.setCheck(false);</div><div class="line">        config.setAccessLog(true);</div><div class="line">        config.setRetries(2);</div><div class="line">        config.setThrowException(true);</div><div class="line">        return config;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
@@ -514,7 +506,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -524,7 +516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -559,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于Spring-boot实现Motan-Demo"><span class="nav-number">1.</span> <span class="nav-text">基于Spring boot实现Motan Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单描述Motan框架"><span class="nav-number">1.1.</span> <span class="nav-text">简单描述Motan框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motan依赖"><span class="nav-number">1.2.</span> <span class="nav-text">Motan依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过注解实现Motan-Demo"><span class="nav-number">1.3.</span> <span class="nav-text">通过注解实现Motan Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为服务提供方和服务调用方创建规范接口"><span class="nav-number">1.3.1.</span> <span class="nav-text">为服务提供方和服务调用方创建规范接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端创建基于规范接口的实现类"><span class="nav-number">1.3.2.</span> <span class="nav-text">服务端创建基于规范接口的实现类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端创建服务暴露类-服务暴露类里定义带有如下返回值的方法"><span class="nav-number">1.4.</span> <span class="nav-text">服务端创建服务暴露类,服务暴露类里定义带有如下返回值的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名"><span class="nav-number">1.4.1.</span> <span class="nav-text">返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回类型为ProtocolConfigBean的bean定义-该方法做协议配置"><span class="nav-number">1.4.2.</span> <span class="nav-text">返回类型为ProtocolConfigBean的bean定义,该方法做协议配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为RegistryConfigBean的bean定义-该方法用于配置注册中心"><span class="nav-number">1.4.3.</span> <span class="nav-text">返回值类型为RegistryConfigBean的bean定义,该方法用于配置注册中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为BasicServiceConfigBean的bean定义-该方法提供服务暴露或引用时所需要的配置项"><span class="nav-number">1.4.4.</span> <span class="nav-text">返回值类型为BasicServiceConfigBean的bean定义,该方法提供服务暴露或引用时所需要的配置项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端main方法"><span class="nav-number">1.5.</span> <span class="nav-text">服务端main方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端端创建服务引用类-服务引用类里定义带有如下返回值的方法"><span class="nav-number">1.6.</span> <span class="nav-text">客户端端创建服务引用类,服务引用类里定义带有如下返回值的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回类型为ProtocolConfigBean的bean定义"><span class="nav-number">1.6.2.</span> <span class="nav-text">返回类型为ProtocolConfigBean的bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为RegistryConfigBean的bean定义"><span class="nav-number">1.6.3.</span> <span class="nav-text">返回值类型为RegistryConfigBean的bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为BasicRefererConfigBean的bean定义"><span class="nav-number">1.6.4.</span> <span class="nav-text">返回值类型为BasicRefererConfigBean的bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller中将注入的待暴露接口加上-MotanReferer注解"><span class="nav-number">1.6.5.</span> <span class="nav-text">controller中将注入的待暴露接口加上@MotanReferer注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以上操作完成配置"><span class="nav-number">1.7.</span> <span class="nav-text">以上操作完成配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单描述Motan框架"><span class="nav-number">1.</span> <span class="nav-text">简单描述Motan框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motan依赖"><span class="nav-number">2.</span> <span class="nav-text">Motan依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过注解实现Motan-Demo"><span class="nav-number">3.</span> <span class="nav-text">通过注解实现Motan Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为服务提供方和服务调用方创建规范接口"><span class="nav-number">3.1.</span> <span class="nav-text">为服务提供方和服务调用方创建规范接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端创建基于规范接口的实现类"><span class="nav-number">3.2.</span> <span class="nav-text">服务端创建基于规范接口的实现类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端创建服务暴露类-服务暴露类里定义带有如下返回值的方法"><span class="nav-number">4.</span> <span class="nav-text">服务端创建服务暴露类,服务暴露类里定义带有如下返回值的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名"><span class="nav-number">4.1.</span> <span class="nav-text">返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回类型为ProtocolConfigBean的bean定义-该方法做协议配置"><span class="nav-number">4.2.</span> <span class="nav-text">返回类型为ProtocolConfigBean的bean定义,该方法做协议配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为RegistryConfigBean的bean定义-该方法用于配置注册中心"><span class="nav-number">4.3.</span> <span class="nav-text">返回值类型为RegistryConfigBean的bean定义,该方法用于配置注册中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为BasicServiceConfigBean的bean定义-该方法提供服务暴露或引用时所需要的配置项"><span class="nav-number">4.4.</span> <span class="nav-text">返回值类型为BasicServiceConfigBean的bean定义,该方法提供服务暴露或引用时所需要的配置项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端main方法"><span class="nav-number">5.</span> <span class="nav-text">服务端main方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端端创建服务引用类-服务引用类里定义带有如下返回值的方法"><span class="nav-number">6.</span> <span class="nav-text">客户端端创建服务引用类,服务引用类里定义带有如下返回值的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名-1"><span class="nav-number">6.1.</span> <span class="nav-text">返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回类型为ProtocolConfigBean的bean定义"><span class="nav-number">6.2.</span> <span class="nav-text">返回类型为ProtocolConfigBean的bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为RegistryConfigBean的bean定义"><span class="nav-number">6.3.</span> <span class="nav-text">返回值类型为RegistryConfigBean的bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值类型为BasicRefererConfigBean的bean定义"><span class="nav-number">6.4.</span> <span class="nav-text">返回值类型为BasicRefererConfigBean的bean定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller中将注入的待暴露接口加上-MotanReferer注解"><span class="nav-number">6.5.</span> <span class="nav-text">controller中将注入的待暴露接口加上@MotanReferer注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以上操作完成配置"><span class="nav-number">7.</span> <span class="nav-text">以上操作完成配置</span></a></li></ol></div>
             
 
           </div>
@@ -588,16 +580,16 @@
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="www.tilkai.com 强力驱动
+</div> -->
 
-<div class="theme-info">
+<!-- <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
-</div>
+</div> -->
 
 
         
