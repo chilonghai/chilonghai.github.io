@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="motan," />
+  <meta name="keywords" content="SpringBoot,Motan," />
 
 
 
@@ -86,14 +86,14 @@
 
 <meta name="description" content="简单描述Motan框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Spring boot实现Motan Demo">
+<meta property="og:title" content="基于SpringBoot实现MotanDemo">
 <meta property="og:url" content="http://yoursite.com/2016/12/08/基于Spring-boot实现Motan-Demo/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
 <meta property="og:description" content="简单描述Motan框架">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/Motan01.jpg">
-<meta property="og:updated_time" content="2016-12-09T14:49:38.000Z">
+<meta property="og:updated_time" content="2016-12-13T08:33:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于Spring boot实现Motan Demo">
+<meta name="twitter:title" content="基于SpringBoot实现MotanDemo">
 <meta name="twitter:description" content="简单描述Motan框架">
 <meta name="twitter:image" content="http://ohx3k2vj3.bkt.clouddn.com/Motan01.jpg">
 
@@ -129,7 +129,7 @@
 
 
 
-  <title> 基于Spring boot实现Motan Demo | TilKaiのblog </title>
+  <title> 基于SpringBoot实现MotanDemo | TilKaiのblog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -284,7 +284,7 @@
             
             
               
-                基于Spring boot实现Motan Demo
+                基于SpringBoot实现MotanDemo
               
             
           </h1>
@@ -358,7 +358,7 @@
 <h3 id="返回值类型为BasicServiceConfigBean的bean定义-该方法提供服务暴露或引用时所需要的配置项"><a href="#返回值类型为BasicServiceConfigBean的bean定义-该方法提供服务暴露或引用时所需要的配置项" class="headerlink" title="返回值类型为BasicServiceConfigBean的bean定义,该方法提供服务暴露或引用时所需要的配置项"></a>返回值类型为BasicServiceConfigBean的bean定义,该方法提供服务暴露或引用时所需要的配置项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Bean</div><div class="line">public BasicServiceConfigBean baseServiceConfig() &#123;</div><div class="line">   BasicServiceConfigBean config = new BasicServiceConfigBean();</div><div class="line">   config.setExport(&quot;demoMotan:8002&quot;);</div><div class="line">   config.setGroup(&quot;testgroup&quot;);</div><div class="line">   config.setAccessLog(false);</div><div class="line">   config.setShareChannel(true);</div><div class="line">   config.setModule(&quot;motan-demo-rpc&quot;);</div><div class="line">   config.setApplication(&quot;myMotanDemo&quot;);</div><div class="line">   config.setRegistry(&quot;registryConfig&quot;);</div><div class="line">   return config;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="服务端main方法"><a href="#服务端main方法" class="headerlink" title="服务端main方法"></a>服务端main方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    //System.setProperty(&quot;server.port&quot;, &quot;8081&quot;);</div><div class="line">    ConfigurableApplicationContext context =  SpringApplication.run(SpringBootRpcServerDemo.class, args);</div><div class="line">    //MotanSwitcherUtil.setSwitcherValue(MotanConstants.REGISTRY_HEARTBEAT_SWITCHER, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="客户端端创建服务引用类-服务引用类里定义带有如下返回值的方法"><a href="#客户端端创建服务引用类-服务引用类里定义带有如下返回值的方法" class="headerlink" title="客户端端创建服务引用类,服务引用类里定义带有如下返回值的方法"></a>客户端端创建服务引用类,服务引用类里定义带有如下返回值的方法</h2><h3 id="返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名-1"><a href="#返回值类型为AnnotationBean的bean定义-该方法指定待解析的包名-1" class="headerlink" title="返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名"></a>返回值类型为AnnotationBean的bean定义,该方法指定待解析的包名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Bean</div><div class="line">public AnnotationBean motanAnnotationBean() &#123;</div><div class="line">    AnnotationBean annotationBean = new AnnotationBean();</div><div class="line">    motanAnnotationBean.setPackage(&quot;com.weibo.motan.demo.client.control&quot;);</div><div class="line">    return motanAnnotationBean;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#35813;&#22788;&#25351;&#x5b9a;&#x63;&#111;&#x6e;&#116;&#x72;&#x6f;&#x6c;&#x6c;&#x65;&#114;&#21253;&#44;&#35299;&#26512;&#64;&#x4d;&#x6f;&#x74;&#97;&#x6e;&#x52;&#101;&#x66;&#x65;&#x72;&#101;&#114;&#27880;&#35299;&#x7684;&#23545;&#x8c61;">&#35813;&#22788;&#25351;&#x5b9a;&#x63;&#111;&#x6e;&#116;&#x72;&#x6f;&#x6c;&#x6c;&#x65;&#114;&#21253;&#44;&#35299;&#26512;&#64;&#x4d;&#x6f;&#x74;&#97;&#x6e;&#x52;&#101;&#x66;&#x65;&#x72;&#101;&#114;&#27880;&#35299;&#x7684;&#23545;&#x8c61;</a></p>
+<p><a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#x8be5;&#x5904;&#x6307;&#23450;&#99;&#x6f;&#x6e;&#x74;&#x72;&#x6f;&#x6c;&#x6c;&#101;&#114;&#x5305;&#44;&#x89e3;&#26512;&#64;&#77;&#x6f;&#116;&#97;&#110;&#x52;&#x65;&#x66;&#101;&#x72;&#101;&#114;&#x6ce8;&#35299;&#x7684;&#23545;&#x8c61;">&#x8be5;&#x5904;&#x6307;&#23450;&#99;&#x6f;&#x6e;&#x74;&#x72;&#x6f;&#x6c;&#x6c;&#101;&#114;&#x5305;&#44;&#x89e3;&#26512;&#64;&#77;&#x6f;&#116;&#97;&#110;&#x52;&#x65;&#x66;&#101;&#x72;&#101;&#114;&#x6ce8;&#35299;&#x7684;&#23545;&#x8c61;</a></p>
 <h3 id="返回类型为ProtocolConfigBean的bean定义"><a href="#返回类型为ProtocolConfigBean的bean定义" class="headerlink" title="返回类型为ProtocolConfigBean的bean定义"></a>返回类型为ProtocolConfigBean的bean定义</h3><p>与服务端配置相同即可;</p>
 <h3 id="返回值类型为RegistryConfigBean的bean定义"><a href="#返回值类型为RegistryConfigBean的bean定义" class="headerlink" title="返回值类型为RegistryConfigBean的bean定义"></a>返回值类型为RegistryConfigBean的bean定义</h3><p>与服务端配置相同即可;</p>
 <h3 id="返回值类型为BasicRefererConfigBean的bean定义"><a href="#返回值类型为BasicRefererConfigBean的bean定义" class="headerlink" title="返回值类型为BasicRefererConfigBean的bean定义"></a>返回值类型为BasicRefererConfigBean的bean定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Bean(name = &quot;clientBasicConfig&quot;)</div><div class="line">    public BasicRefererConfigBean baseRefererConfig() &#123;</div><div class="line">        BasicRefererConfigBean config = new BasicRefererConfigBean();</div><div class="line">        config.setProtocol(&quot;demoMotan&quot;);</div><div class="line">        config.setGroup(&quot;motan-demo-rpc&quot;);</div><div class="line">        config.setModule(&quot;motan-demo-rpc&quot;);</div><div class="line">        config.setApplication(&quot;myMotanDemo&quot;);</div><div class="line">        config.setRegistry(&quot;registry&quot;);</div><div class="line">        config.setCheck(false);</div><div class="line">        config.setAccessLog(true);</div><div class="line">        config.setRetries(2);</div><div class="line">        config.setThrowException(true);</div><div class="line">        return config;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
@@ -394,7 +394,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/motan/" rel="tag"># motan</a>
+            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+          
+            <a href="/tags/Motan/" rel="tag"># Motan</a>
           
         </div>
       
@@ -431,7 +433,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/12/08/基于Spring-boot实现Motan-Demo/"
-     data-title="基于Spring boot实现Motan Demo"
+     data-title="基于SpringBoot实现MotanDemo"
      data-content=""
      data-url="http://yoursite.com/2016/12/08/基于Spring-boot实现Motan-Demo/">
   <div class="ds-share-inline">
@@ -461,7 +463,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/12/08/基于Spring-boot实现Motan-Demo/"
-           data-title="基于Spring boot实现Motan Demo" data-url="http://yoursite.com/2016/12/08/基于Spring-boot实现Motan-Demo/">
+           data-title="基于SpringBoot实现MotanDemo" data-url="http://yoursite.com/2016/12/08/基于Spring-boot实现Motan-Demo/">
       </div>
     
   </div>
@@ -506,7 +508,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -516,7 +518,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
