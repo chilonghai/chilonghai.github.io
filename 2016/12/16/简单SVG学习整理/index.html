@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Shiro," />
+  <meta name="keywords" content="SVG," />
 
 
 
@@ -84,20 +84,16 @@
 
 
 
-<meta name="description" content="官方文档">
+<meta name="description" content="简单SVG语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Apache-Shiro简介">
-<meta property="og:url" content="http://yoursite.com/2016/12/12/Apache-Shiro简介/index.html">
+<meta property="og:title" content="简单SVG学习整理">
+<meta property="og:url" content="http://yoursite.com/2016/12/16/简单SVG学习整理/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
-<meta property="og:description" content="官方文档">
-<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure.png">
-<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure2.png">
-<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure3.png">
-<meta property="og:updated_time" content="2016-12-13T08:33:56.000Z">
+<meta property="og:description" content="简单SVG语法">
+<meta property="og:updated_time" content="2016-12-16T10:42:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apache-Shiro简介">
-<meta name="twitter:description" content="官方文档">
-<meta name="twitter:image" content="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure.png">
+<meta name="twitter:title" content="简单SVG学习整理">
+<meta name="twitter:description" content="简单SVG语法">
 
 
 
@@ -125,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/12/Apache-Shiro简介/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/16/简单SVG学习整理/"/>
 
 
 
 
 
-  <title> Apache-Shiro简介 | TilKaiのblog </title>
+  <title> 简单SVG学习整理 | TilKaiのblog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/12/Apache-Shiro简介/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/简单SVG学习整理/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="TilKai">
@@ -286,7 +282,7 @@
             
             
               
-                Apache-Shiro简介
+                简单SVG学习整理
               
             
           </h1>
@@ -299,8 +295,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T16:27:00+08:00">
-                2016-12-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T18:36:31+08:00">
+                2016-12-16
               </time>
             
 
@@ -315,8 +311,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/12/Apache-Shiro简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/Apache-Shiro简介/" itemprop="commentCount"></span>
+                <a href="/2016/12/16/简单SVG学习整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/简单SVG学习整理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -342,24 +338,94 @@
       
 
       
-        <p><a href="http://shiro.apache.org/documentation.html" target="_blank" rel="external">官方文档</a><br><a id="more"></a><br><strong>参考:</strong><br><a href="http://www.ibm.com/developerworks/cn/web/wa-apacheshiro/" target="_blank" rel="external">Apache Shiro 简介</a><br><a href="http://jinnianshilongnian.iteye.com/blog/2018936" target="_blank" rel="external">第一章 Shiro简介——《跟我学Shiro》</a><br><a href="https://github.com/zhangkaitao/shiro-example" target="_blank" rel="external">黑马张开涛Shiro源码参考实例</a></p>
-<p><strong>Apache Shiro</strong> : 用于身份验证和授权的框架.<br><strong>身份验证</strong> : 指验证用户身份.(如常见验证身份的方法有:用户名和密码的组合,指纹,证书等).<br><strong>授权</strong> : 身份验证成功后, 授权进行接管, 以便进行访问的限制或允许.</p>
-<p>Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等。</p>
-<p><strong>Shiro基本功能点:</strong><br><img src="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure.png" alt="Shiro基本功能"><br><strong>Ahthentication</strong> : 身份认证/登录, 验证用户是不是拥有相应的身份;<br><strong>Authorization</strong> : 授权, 即权限验证, 验证某个已认证的用户是否拥有某个权限;<br><strong>Session Manager</strong> : 回话管理, 用户登录后就是一次会话, 在没有退出前, 用户的所有信息都在该会话中, 会话可以是普通JavaSE环境的, 也可以是如Web环境的;<br><strong>Cryptography</strong> : 加密, 保护数据的安全, 如密码加密存储到数据库中等;<br><strong>Web Support</strong> : 集成到WEB环境;<br><strong>Concurrency</strong> : shiro支持多线程应用的并发验证, 即如在一个线程中开启另一个线程, 能把权限自动传播过去;<br><strong>Testing</strong> : 测试支持;<br><strong>Run As</strong> : 允许一个用户假装另一个用户(如果他们允许)的身份进行访问;<br><strong>Remember Me</strong> : 记住我;</p>
-<p><strong>但是!</strong><br><strong>Shiro不会去维护用户、维护权限, 这些需要我们自己去设计/提供, 然后通过相应的接口注入给Shiro.</strong></p>
-<h2 id="从外部和内部来看一下Shiro框架"><a href="#从外部和内部来看一下Shiro框架" class="headerlink" title="从外部和内部来看一下Shiro框架"></a>从外部和内部来看一下Shiro框架</h2><p>对于一个好的框架, 从外部来看, 应该具有非常简单易于使用的API, 且API契约明确; 从内部来看, 其应该有一个可拓展的架构, 即非常容易插入用户的自定义实现, 因为任何框架都不能满足所有需求;</p>
-<h3 id="外部来看Shiro工作流程"><a href="#外部来看Shiro工作流程" class="headerlink" title="外部来看Shiro工作流程"></a>外部来看Shiro工作流程</h3><p><img src="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure2.png" alt="Shiro外部工作流程"></p>
-<p>由图, 应用代码直接交互的对象是Subject, 也就是说Shiro的对外API核心就是Subject;</p>
-<p><strong>Subject</strong> : 主体, 代表当前”用户”, “用户”不一定是一个具体的人, 与当前应用交互的任何东西都是sbuject, 像网络爬虫, 机器人等, “用户”是一个抽象概念; 所有Subject都绑定到SecurityManager, 与Subject的所有交互都会委托给SecurityManager, 可以把Subject认为是一个门面, SecurityManager才是实际的执行者;<br><strong>SecurityManager</strong> : 安全管理器, 即所有与安全有关的操作都会与SecurityManager交互, 且它管理着所有Subject, 可以看出它是Shiro的核心, 其负责与其他组件交互, 相当SpringMVC中的DispatcherServlet前端控制器;<br><strong>Realm</strong> : 域, Shiro从Realm获取安全数据(例如用户, 角色, 权限), 就是说SecurityManager要验证用户身份, 需要从Realm获取相应的用户进行比较以确定用户身份是否合法, 也需要从Realm得到用户相应的角色/权限进行验证用户是否能进行操作, 可以把Realm看成DataSource, 即安全数据源;</p>
-<p>于是, 最简单的Shiro应用:</p>
+        <h1 id="简单SVG语法"><a href="#简单SVG语法" class="headerlink" title="简单SVG语法"></a>简单SVG语法</h1><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="圆形、矩形、椭圆等简单代码"><a href="#圆形、矩形、椭圆等简单代码" class="headerlink" title="圆形、矩形、椭圆等简单代码"></a>圆形、矩形、椭圆等简单代码</h2><blockquote>
+<ul>
+<li>圆形简单代码</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;circle cx = &quot;50&quot; cy = &quot;40&quot; r = &quot;40&quot; style = &quot;stroke : green; stroke-width : 4; stroke-opaciry : 0.9; fill : yellow; fill-opacity : 1; opacity : 1;&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
 <ol>
-<li>应用代码通过Subject来进行认证和授权, Subject委托给SecurityManager;</li>
-<li>给Shiro的SecurityManager注入Realm, SecurityManager获取用户及权限进行判断;</li>
+<li>cx、cy: 圆心x轴、y轴坐标;</li>
+<li>r: 圆半径;</li>
+<li>stroke: 边框颜色(也可使用RGB);</li>
+<li>stroke-width: 边框宽度;</li>
+<li>stroke-opacity: 边框透明度,数值范围从0-1;</li>
+<li>fill: 填充色;</li>
+<li>fill-opacity: 填充透明度;</li>
+<li>opacity: 整体透明度;</li>
 </ol>
-<p><strong>由此可见, Shiro没有提供维护用户/权限的功能, 这些需要开发者通过Realm注入;</strong></p>
+<blockquote>
+<ul>
+<li>圆角矩形简单代码</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;rect x = &quot;50&quot; y = &quot;20&quot; rx = &quot;20&quot; ry = &quot;20&quot; width = &quot;300&quot; hieght = &quot;100&quot; style = &quot;fill : rgh(0,0,255); stroke-width : 3; stroke : rgb(0,0,0); fill-opacity : 0.1; strok-opacity : 0.9;&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
+<ol>
+<li>rx、ry: 矩形圆角x轴、y轴方向的半径;</li>
+</ol>
+<blockquote>
+<ul>
+<li>椭圆简单代码</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;ellipse cx = &quot;200&quot; cy = &quot;80&quot; rx = &quot;100&quot; ry = &quot;50&quot; .../&gt;</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="内部来看Shiro工作流程"><a href="#内部来看Shiro工作流程" class="headerlink" title="内部来看Shiro工作流程"></a>内部来看Shiro工作流程</h3><p><img src="http://ohx3k2vj3.bkt.clouddn.com/ShiroStructure3.png" alt="Shiro内部工作流程"></p>
-<p><strong>Subject</strong> : 由图看出, Subject可以是任何可以跟应用交互的”用户”;<br><strong>SecurityManager</strong> : 相当于SpringMVC中的DispatcherServlet或者Struts2中的FilterDispatcher, 所有具体的交互都通过SecurityManager进行控制, 它管理着所有Subject、且负责进行认证和授权、及会话、缓存的管理;<br><strong>Authenticator</strong> : 认证器, 负责主体认证, 这是一个扩展点, 如果用户觉得Shiro默认的不好, 可以自定义实现; 其需要认证策略(Authentication Strategy), 即什么情况下算用户认证通过了;<br><strong>Authrizer</strong> : 授权器, 或者叫访问控制器, 用来决定主体是否有权限进行相应的操作, 即控制着用户能访问应用中的哪些功能;<br><strong>Realm</strong> : 可以有1个或多个Realm, 可以认为是安全实体数据源, 即用于获取安全实体的, 可以是JDBC实现, 可以是LDAP实现或者内存实现等, 由用户提供; <strong>注意</strong>, <em>Shiro不知道你的用户/权限存储在哪及以何种格式存储, 所以我们一般在应用中都需要实现自己的Realm</em>;<br><strong>SessionManager</strong> : 如果写过Servlet就应该知道Session的概念, Session需要有人去管理它的生命周期, 这个组件就是SessionManager, 而Shiro并不仅仅可以用在Web环境, 也可以用在如普通的JavaSE环境、EJB等环境, 所以, Shiro就抽象了一个自己的Session来管理主体与应用之间交互的数据, 这样的话, 比如我们在Web环境用, 刚开始是一台Web服务器, 接着又上了台EJB服务器, 这时想把两台服务器的会话数据放到一个地方, 这个时候就可以实现自己的分布式会话(如把数据放到Memcached服务器);<br><strong>SessionDAO</strong> : 如果我们想把Session保存到数据库, 那么可以实现自己的SessionDAO, 通过如JDBC等操作写入数据库; 此外Session还可以使用Cache缓存, 以提高性能;<br><strong>CacheManager</strong> : 缓存控制器, 用来管理像用户、角色、权限等的缓存的, 因为这些数据基本上很少去改变, 放到缓存中后可以提高访问的性能;<br><strong>Cryptography</strong> : Shiro提供了密码加密/解密组件;</p>
+<h2 id="线、文本与多边形"><a href="#线、文本与多边形" class="headerlink" title="线、文本与多边形"></a>线、文本与多边形</h2><blockquote>
+<ul>
+<li>直线</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;line x1 = &quot;0&quot; y1 = &quot;0&quot; x2 = &quot;200&quot; y2 = &quot;200&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
+<ol>
+<li>x1、y1: 直线起始x、y轴坐标;</li>
+<li>x2、y2: 直线终止x、y轴坐标;</li>
+</ol>
+<blockquote>
+<ul>
+<li>折线</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;polyline points = &quot;20,20 40,25 60,40 80,120 120,140 200,180&quot;</div><div class="line">style = &quot;fill : none; stroke : black; stroke-wiedth : 3;&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
+<ol>
+<li>points 定义折线段的端点坐标，坐标与坐标间用空格分隔;</li>
+<li>fill : none; 定义折线交叉后的封闭区域不会填充颜色;</li>
+</ol>
+<blockquote>
+<ul>
+<li>文本</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;text x = &quot;80&quot; y = &quot;100&quot; fill = &quot;blue&quot; transform = &quot;rotate(20 150,120)&quot;&gt;多行文本 - 第零行</div><div class="line">  &lt;tspan x = &quot;100&quot; y = &quot;120&quot; transform = &quot;rotate(20 150,120)&quot;&gt;多行文本 - 第一行&lt;/tspan&gt;</div><div class="line">  &lt;tspan x = &quot;100&quot; y = &quot;140&quot; transform = &quot;rotate(20 150,120)&quot;&gt;多行文本 - 第二行&lt;/tspan&gt;</div><div class="line">&lt;/text&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
+<ol>
+<li>transform = “rotate(20 150,120)” 定义以150,120坐标点为旋转中心,旋转20度.</li>
+</ol>
+<blockquote>
+<ul>
+<li>多边形</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polygon points = &quot;240,48 352,396 58,180 422,180 128,396&quot; style = &quot;fill : green; stroke : red; stroke-width : 3; fill-rule : nonzero;&quot;&gt;&lt;/polygon&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
+<ol>
+<li>fill-rule : 定义填充规则,用于判断一个点是否在图形内部的算法,可选值为nonzero,evenodd,inherit;</li>
+</ol>
+<h2 id="简单路径"><a href="#简单路径" class="headerlink" title="简单路径"></a>简单路径</h2><blockquote>
+<ul>
+<li>path</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;path d=&quot;M600 0 L500 200 L700 200 Z&quot;/&gt;</div></pre></td></tr></table></figure>
+<p><strong>关键字</strong></p>
+<ol>
+<li>M : 移动画笔到指定坐标，不绘制;</li>
+<li>L : 从当前点绘制直线到指定点;</li>
+<li>Z : 从当前点做到起点的直线，构成闭合路径;</li>
+</ol>
 
       
     </div>
@@ -383,7 +449,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Shiro/" rel="tag"># Shiro</a>
+            <a href="/tags/SVG/" rel="tag"># SVG</a>
           
         </div>
       
@@ -392,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/11/Hibernate基本查询操作/" rel="next" title="Hibernate基本查询操作">
-                <i class="fa fa-chevron-left"></i> Hibernate基本查询操作
+              <a href="/2016/12/14/Mac下安装MariaDB/" rel="next" title="Mac下安装MariaDB">
+                <i class="fa fa-chevron-left"></i> Mac下安装MariaDB
               </a>
             
           </div>
@@ -402,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/12/Apache-Shiro身份认证/" rel="prev" title="Apache-Shiro身份认证">
-                Apache-Shiro身份认证 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/16/java细节与误区学习整理/" rel="prev" title="java细节与误区学习整理">
+                java细节与误区学习整理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -419,10 +485,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/12/Apache-Shiro简介/"
-     data-title="Apache-Shiro简介"
+        <div class="ds-share flat" data-thread-key="2016/12/16/简单SVG学习整理/"
+     data-title="简单SVG学习整理"
      data-content=""
-     data-url="http://yoursite.com/2016/12/12/Apache-Shiro简介/">
+     data-url="http://yoursite.com/2016/12/16/简单SVG学习整理/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -449,8 +515,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/12/Apache-Shiro简介/"
-           data-title="Apache-Shiro简介" data-url="http://yoursite.com/2016/12/12/Apache-Shiro简介/">
+      <div class="ds-thread" data-thread-key="2016/12/16/简单SVG学习整理/"
+           data-title="简单SVG学习整理" data-url="http://yoursite.com/2016/12/16/简单SVG学习整理/">
       </div>
     
   </div>
@@ -540,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从外部和内部来看一下Shiro框架"><span class="nav-number">1.</span> <span class="nav-text">从外部和内部来看一下Shiro框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部来看Shiro工作流程"><span class="nav-number">1.1.</span> <span class="nav-text">外部来看Shiro工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部来看Shiro工作流程"><span class="nav-number">1.2.</span> <span class="nav-text">内部来看Shiro工作流程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单SVG语法"><span class="nav-number">1.</span> <span class="nav-text">简单SVG语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆形、矩形、椭圆等简单代码"><span class="nav-number">1.2.</span> <span class="nav-text">圆形、矩形、椭圆等简单代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线、文本与多边形"><span class="nav-number">1.3.</span> <span class="nav-text">线、文本与多边形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单路径"><span class="nav-number">1.4.</span> <span class="nav-text">简单路径</span></a></li></ol></li></ol></div>
             
 
           </div>
