@@ -1,0 +1,724 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SpringDataJPA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JPA实体管理器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringDataJPA学习整理">
+<meta property="og:url" content="http://yoursite.com/2016/12/18/SpringDataJPA学习整理/index.html">
+<meta property="og:site_name" content="TilKaiのblog">
+<meta property="og:description" content="JPA实体管理器">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/SpringDataJpa1.png">
+<meta property="og:updated_time" content="2016-12-18T15:36:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringDataJPA学习整理">
+<meta name="twitter:description" content="JPA实体管理器">
+<meta name="twitter:image" content="http://ohx3k2vj3.bkt.clouddn.com/SpringDataJpa1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/18/SpringDataJPA学习整理/"/>
+
+
+
+
+
+  <title> SpringDataJPA学习整理 | TilKaiのblog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0747e892dcea1b9ae090b93da8faaa6a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">TilKaiのblog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/18/SpringDataJPA学习整理/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="TilKai">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="TilKaiのblog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="TilKaiのblog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SpringDataJPA学习整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-18T23:33:49+08:00">
+                2016-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/18/SpringDataJPA学习整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/18/SpringDataJPA学习整理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JPA实体管理器"><a href="#JPA实体管理器" class="headerlink" title="JPA实体管理器"></a>JPA实体管理器</h2><a id="more"></a>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实体管理器可以理解为数据库表和实体之间交互的桥梁，通过调用实体管理器相关方法可以把实体持久化到数据库中，也可以把数据库中记录打包成实体对象。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实体具有生命周期，这个生命周期指实体从创建到销毁在实体管理器方法管理下呈现出的状态。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下图描述了实体生命周期以及实体管理器如何控制各个状态的实体:<br><img src="http://ohx3k2vj3.bkt.clouddn.com/SpringDataJpa1.png" alt="实体状态转换图"><br>实体生命周期包括四个状态:</p>
+<blockquote>
+<p>新建状态<br>托管状态<br>游离状态<br>删除状态</p>
+</blockquote>
+<p>即，<strong>插入</strong>一条记录，需要新建一个实体并向实体执行赋值操作，调用persist()方法，提交事务；<br><strong>修改</strong>实体有两种方法，一个是利用之前已经执行过添加或修改操作的实体(通常处于游离状态的实体)，调用merge()方法，并提交事务；另一个是通过条件查询出实体，修改实体属性，提交事务；<br><strong>删除</strong>操作要先根据条件查询出实体，调用remove()方法，提交事务；</p>
+<h2 id="简单代码实现增删改查"><a href="#简单代码实现增删改查" class="headerlink" title="简单代码实现增删改查"></a>简单代码实现增删改查</h2><p>UserRepository接口:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public interface UserRepository extends JpaRepository&lt;User, Integer&gt; &#123;</div><div class="line">    public void add(User user); // 添加</div><div class="line">    public User update(User user); // 修改</div><div class="line">    public User addOrUpdate(User user); // 添加或修改</div><div class="line">    public void delete(User user); // 删除</div><div class="line">    public User findOne(Integer id); // 查询单个实体</div><div class="line">    public List&lt;User&gt; findAll(); // 查询所有实体</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>UserRepository实现类:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *使用Impl结尾，JPA会自动发现并使用该实现类</div><div class="line"> */</div><div class="line">public class UserRepositoryImpl &#123;</div><div class="line"></div><div class="line">    //使用@PersistenceContext注解注入实体管理器</div><div class="line">    @PersistenceContext</div><div class="line">    private EntityManager entityManager;</div><div class="line"></div><div class="line">    @Transactional</div><div class="line">    public void add(User user) &#123;</div><div class="line">        entityManager.persist(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Transactional</div><div class="line">    public User update()&#123;</div><div class="line">        User userUpdate = entityManager.find(User.class, user.getId());</div><div class="line">        userUpdate.setAddress(user.getAddress);</div><div class="line">        userUpdate.setPhone(user.getPhone);</div><div class="line"></div><div class="line">        return userUpdate;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Transactional</div><div class="line">    public User addOrUpdate(User user)&#123;</div><div class="line">        return entityManager.merge(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Transactional</div><div class="line">    public void delete(User user)&#123;</div><div class="line">        entityManager.remove(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public User fidOne(Integer id)&#123;</div><div class="line">        return entityManager.find(User.class, id);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public List&lt;User&gt; finddAll()&#123;</div><div class="line">        String queryStr = &quot;select u from User u&quot;;</div><div class="line">        Query query = entityManager.createQuery(queryStr);</div><div class="line">        return query.getResultList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="如何将实体属性分散到两个-或以上-表格中存放"><a href="#如何将实体属性分散到两个-或以上-表格中存放" class="headerlink" title="如何将实体属性分散到两个(或以上)表格中存放"></a>如何将实体属性分散到两个(或以上)表格中存放</h2><p><1>. 实体类加<code>@SecondaryTables</code>注解</1></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">@Entity</div><div class="line">@Table(name = &quot;t_user&quot;)</div><div class="line">@SecondaryTables(&#123;</div><div class="line">    @SecondaryTable(name = &quot;t_address&quot;, pkJoinColums = @PrimaryKeyJoinColum(name = &quot;address_id&quot;))</div><div class="line">&#125;)</div><div class="line">public class User&#123;</div><div class="line"></div><div class="line">    @Id</div><div class="line">    @GenerateValue</div><div class="line">    @Column(name = &quot;id&quot;)</div><div class="line">    private Integer id;</div><div class="line"></div><div class="line">    // ...</div><div class="line"></div><div class="line">    // 定义分散表格字段</div><div class="line">    @Column(table = &quot;t_address&quot;, name = &quot;street&quot;)</div><div class="line">    private String street;</div><div class="line"></div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="内嵌实体"><a href="#内嵌实体" class="headerlink" title="内嵌实体"></a>内嵌实体</h3><p><1>. 使用@Embeddable注解，标识一个实体类，使该类可嵌入其他实体中；</1></p>
+<p><2>. 在使用@Embeddable标识实体的实体中，使用Embedded注解引入实体；</2></p>
+<p><3>. 可重命名实体的属性名称，如嵌入Comment实体：</3></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Embedded</div><div class="line">@AttributeOverrides(&#123;</div><div class="line">    @AttributeOverride(name = &quot;title&quot;, column = @Column(name = &quot;newTitle&quot;)),</div><div class="line">    @AttributeOverride(name = &quot;content&quot;, column = @Column(name = &quot;newContent&quot;))</div><div class="line">&#125;)</div><div class="line">private Comment comment;</div></pre></td></tr></table></figure>
+<h2 id="一对一、一对多、多对多映射"><a href="#一对一、一对多、多对多映射" class="headerlink" title="一对一、一对多、多对多映射"></a>一对一、一对多、多对多映射</h2><h3 id="一对一映射"><a href="#一对一映射" class="headerlink" title="一对一映射"></a>一对一映射</h3><p>如:<br>主表为Person实体，从表为Address实体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Persion &#123;</div><div class="line">    @Id</div><div class="line">    @GeneratedValue(strategy = GenerationType.AUTO)</div><div class="line">    private Long id;</div><div class="line"></div><div class="line">    //...</div><div class="line"></div><div class="line">    /**</div><div class="line">     * @JoinColumn定义主从表字段关联:</div><div class="line">     *     name属性定义主表外键字段</div><div class="line">     *     referencedColumnName属性定义从表外键(一般为从表主键)</div><div class="line">     * 如果是多字段关联，可以用:</div><div class="line">     *     @JoinColumns(value = &#123;@JoinColumn(), @JoinColumn(), ...&#125;)</div><div class="line">     * 如果不指明@JoinColumn，默认是主键关联，且在主表中生成与从表主键相同名称、类型的外键；</div><div class="line">     */</div><div class="line">    @OneToOne</div><div class="line">    @JoinColumn(name = &quot;addressId&quot;, referencedColumnName = &quot;id&quot;)</div><div class="line">    private Address address;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="一对多映射"><a href="#一对多映射" class="headerlink" title="一对多映射"></a>一对多映射</h3><p>方法1. 使用中间表进行一对多关联:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Entity</div><div class="line">public class Depart &#123;</div><div class="line">    // ...</div><div class="line"></div><div class="line">    // @JoinTable的name为中间表的名称，</div><div class="line">    // joinColumns配置关系拥有者Depart实体与中间表的关联关系，(Depart表的dId关联中间表的departId)</div><div class="line">    // inverseJoinColumns配置关系被拥有者Employee实体与中间表的关联关系，(Employee表的eId关联中间表的employeeId)</div><div class="line">    // 注意，关系被拥有者为List，</div><div class="line">    @OneToMany</div><div class="line">    @JoinTable(name = &quot;depart_employee&quot;,</div><div class="line">        joinColumns = @JoinColumn(name = &quot;departId&quot;, referencedColumnName = &quot;dId&quot;),</div><div class="line">        inverseJoinColumns = @JoinColumn(name = &quot;employeeId&quot;, referencedColumnName = &quot;eId&quot;)</div><div class="line">    )</div><div class="line">    private List&lt;Employee&gt; employees;</div><div class="line"></div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>方法2. 不使用中间表的外键关联:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Depart &#123;</div><div class="line">    // ...</div><div class="line"></div><div class="line">    @OneToMany</div><div class="line">    @JoinColumn(name = &quot;departId&quot;, referencedColumnName = &quot;id&quot;)</div><div class="line">    private List&lt;Employee&gt; employees;</div><div class="line"></div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多对多映射"><a href="#多对多映射" class="headerlink" title="多对多映射"></a>多对多映射</h3><p>与一对多使用中间表的配置基本类似，修改<code>@OneToMany</code>为<code>@ManyToMany</code></p>
+<h3 id="关于级联问题"><a href="#关于级联问题" class="headerlink" title="关于级联问题"></a>关于级联问题</h3><p>主表的增删操作是否对从表进行相应的增删操作，称之为级联问题。<br>例如通过在<code>@OneToOne</code>注解中增加cascade配置项配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * cascade = ...的可选值</div><div class="line"> * ① CascadeType.DETACH</div><div class="line"> * ② CascadeType.MERGE</div><div class="line"> * ③ CascadeType.PERSIST</div><div class="line"> * ④ CascadeType.REFRESH</div><div class="line"> * ⑤ CascadeType.REMOVE 删除主表记录时将从表关联记录一并删除</div><div class="line"> * ⑥ CascadeType.ALL 所有操作都要级联从表操作</div><div class="line"> * 可选多个值:@OneToOne(cascade = &#123;CascadeType.DETACH, CascadeType.MERGE&#125;)</div><div class="line"> */</div><div class="line"></div><div class="line">@OneToOne(cascade = ...)</div></pre></td></tr></table></figure>
+<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p>如果查询主实体信息时，不希望查询出子实体的内容，而是在需要的时候去数据库中获取，此时可以使用懒加载<br>JPA配置懒加载使用<code>fetch = FetchType.LAZT</code></p>
+<h2 id="JPA实体继承"><a href="#JPA实体继承" class="headerlink" title="JPA实体继承"></a>JPA实体继承</h2><p>JPA继承策略:</p>
+<blockquote>
+<p>单一表策略；<br>连接表策略；<br>每个类策略；</p>
+</blockquote>
+<p>在父实体类上添加<code>@Inheritance</code>注解配置继承策略</p>
+<h3 id="单一表策略"><a href="#单一表策略" class="headerlink" title="单一表策略"></a>单一表策略</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Entity</div><div class="line">@Inheritance(strategy = InheritanceType.SINGLE_TABLE)</div><div class="line">public class A &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如此，生成的数据库表中会有DTYPE字段，用以区分是哪个实体的属性；DTYPE叫’鉴别字段’，可选值默认为实体的类名；</p>
+<p>当然JPA中可配置DTYPE别名和可选值的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Entity</div><div class="line">@Inheritance(strategy = InheritanceType.SINGLE_TABLE)</div><div class="line">@DiscriminatorColumn(name = &quot;ITYPE&quot;, discriminatorType = DiscriminatorType.CHAR) // DTYPE的别名</div><div class="line">@DiscriminatorValue(&quot;I&quot;) // DTYPE值配置，每个子类都需要添加该注解</div><div class="line">public class A &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="连接表策略"><a href="#连接表策略" class="headerlink" title="连接表策略"></a>连接表策略</h3><p><code>InheritanceType.JOINED</code><br>如父类A，子类B，子类C，每个实体类对应一张数据库表；三张表通过共享主键彼此关联；</p>
+<h3 id="每个类一个表策略"><a href="#每个类一个表策略" class="headerlink" title="每个类一个表策略"></a>每个类一个表策略</h3><h3 id="JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！"><a href="#JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！" class="headerlink" title="JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！"></a>JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！</h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SpringDataJPA/" rel="tag"># SpringDataJPA</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/16/java细节与误区学习整理/" rel="next" title="java细节与误区学习整理">
+                <i class="fa fa-chevron-left"></i> java细节与误区学习整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/18/SpringDataJPA学习整理/"
+     data-title="SpringDataJPA学习整理"
+     data-content=""
+     data-url="http://yoursite.com/2016/12/18/SpringDataJPA学习整理/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/18/SpringDataJPA学习整理/"
+           data-title="SpringDataJPA学习整理" data-url="http://yoursite.com/2016/12/18/SpringDataJPA学习整理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="TilKai" />
+          <p class="site-author-name" itemprop="name">TilKai</p>
+          <p class="site-description motion-element" itemprop="description">知而慎行</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JPA实体管理器"><span class="nav-number">1.</span> <span class="nav-text">JPA实体管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单代码实现增删改查"><span class="nav-number">2.</span> <span class="nav-text">简单代码实现增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何将实体属性分散到两个-或以上-表格中存放"><span class="nav-number">3.</span> <span class="nav-text">如何将实体属性分散到两个(或以上)表格中存放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内嵌实体"><span class="nav-number">3.1.</span> <span class="nav-text">内嵌实体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一对一、一对多、多对多映射"><span class="nav-number">4.</span> <span class="nav-text">一对一、一对多、多对多映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对一映射"><span class="nav-number">4.1.</span> <span class="nav-text">一对一映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多映射"><span class="nav-number">4.2.</span> <span class="nav-text">一对多映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多映射"><span class="nav-number">4.3.</span> <span class="nav-text">多对多映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于级联问题"><span class="nav-number">4.4.</span> <span class="nav-text">关于级联问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒加载"><span class="nav-number">4.5.</span> <span class="nav-text">懒加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JPA实体继承"><span class="nav-number">5.</span> <span class="nav-text">JPA实体继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一表策略"><span class="nav-number">5.1.</span> <span class="nav-text">单一表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接表策略"><span class="nav-number">5.2.</span> <span class="nav-text">连接表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每个类一个表策略"><span class="nav-number">5.3.</span> <span class="nav-text">每个类一个表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！"><span class="nav-number">5.4.</span> <span class="nav-text">JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TilKai</span>
+</div>
+
+
+<!-- <div class="powered-by">
+  由 <a class="theme-link" href="www.tilkai.space 强力驱动
+</div> -->
+
+<!-- <div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div> -->
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tilkai"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
