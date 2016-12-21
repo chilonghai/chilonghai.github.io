@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/12/06/Swagger-API/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
 <meta property="og:description" content="Swagger常用注解一览及使用">
-<meta property="og:updated_time" content="2016-12-20T12:46:15.000Z">
+<meta property="og:updated_time" content="2016-12-21T02:59:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swagger-API">
 <meta name="twitter:description" content="Swagger常用注解一览及使用">
@@ -343,11 +343,8 @@
 <h3 id="API"><a href="#API" class="headerlink" title="@API"></a>@API</h3><blockquote>
 <p><strong><code>@API</code></strong>: Marks a class as a Swagger resource.</p>
 <p>表示一个开放的API，<br>①<strong>value</strong>: 定义API声明资源的托管路径，一般与@path具有相同的值，若使用tags属性，则value标记失效；<br>②<strong>description</strong>: 简短描述API功能，<strong>1.5x版本不再使用</strong>，Default = “”；<br>③<strong>produces</strong>: 指定API输出的MIME(Multipurpose Internet Mail Extensions)类型，value可以为逗号分隔的内容，如<code>produces = &quot;application/json, application/xml&quot;</code>会建议该API Resource生成JSON和XML输出，Default = “”;<br>④<strong>position</strong>: 定义该API Resource在资源清单中显式排顺的顺序，<strong>1.5x不再使用</strong>，保留作为向前支持，Default = 0;<br>⑤<strong>consumes</strong>: 指定输入，value定义可使用逗号分隔的内容，如<code>consumes = &quot;application/json, application/xml&quot;</code>会建议该API Resource接收JSON和xml类型的输入，Default = “”;<br>⑥<strong>protocols</strong>: 为此资源下的操作设定特定协议，值为字符串，可用逗号分隔设定多个协议，可选值有” http, https, ws, wss”;<br>⑦<strong>authorizations</strong>: 对应操作对象的’security’字段，获取该API Resource所需的授权列表，default = @com.wordnik.swagger.annotations.Authorization(“”);<br>⑧<strong>hidden</strong>: 隐藏该API Resource，实验证明定义在@API中未被使用，而定义在@ApiOperation中时，设置为true可隐藏该方法，Default = false;<br>⑨<strong>tags</strong>: 定义API文档控件的标签列表，用于分组展示，非空值时，覆盖value中的值，数据类型为string类型的List;<br>⑩<strong>basePath</strong>: 1.5x不再使用，保留作为向前支持;</p>
-<hr>
-<p><strong>@Target(value=TYPE)</strong><br><strong>@Retention(value=RUNTIME)</strong><br><strong>@Inherited</strong><br><strong><code>public @ingerface Api</code></strong></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@Api(value = &quot;/IndexController&quot;, tags = &#123;&quot;API1&quot;, &quot;API2&quot;&#125;, description = &quot;Swagger接口示例&quot;, produces = MediaType.APPLICATION_JSON_VALUE, position = 0, consumes = &quot;application/json, application/xml&quot;, hidden = false)</div></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@Api(value = &quot;/IndexController&quot;, tags = &#123;&quot;API1&quot;, &quot;API2&quot;&#125;, description = &quot;Swagger接口示例&quot;, produces = MediaType.APPLICATION_JSON_VALUE, position = 0, consumes = &quot;application/json, application/xml&quot;, hidden = false)</div></pre></td></tr></table></figure>
 <h3 id="ApiImplicitParam"><a href="#ApiImplicitParam" class="headerlink" title="@ApiImplicitParam"></a>@ApiImplicitParam</h3><blockquote>
 <p><strong><code>@ApiImplicitParam</code></strong>:Represents a single parameter in an API Operation.</p>
 <p>While ApiParam is bound to a JAX-RS parameter, method or field, this allows you to manually define a parameter in a fine-tuned manner. This is the only way to define parameters when using Servlets or other non-JAX-RS environments.<br>This annotation must be used as a value of ApiImplicitParams in order to be parsed.</p>
@@ -358,18 +355,12 @@
 <p><1>To set a list of values, provide a comma-separated list surrounded by square brackets. For example: [first, second, third].(直译来看,官方讲的是方括号括起来的逗号分隔的列表，即数组,但这是个坑!直接使用逗号分隔的值的字符串就好了,像可选值为”a”,”b”,”c”,不要写[“a”,”b”,”c”],直接写”a,b,c”吧!)</1></p>
 <p><2>range定义包括或不包括最大值最小值的数值范围，如range[1,5]，range[1,5)，方括号包括临界值，圆括号不包括临界值;</2></p>
 <p><3>range定义从-infinity或到infinity的数组范围，如range[1,infinity]或range[-infinity,1]<br>⑤<strong>required</strong>: 描述参数是否为必须;<br>⑥<strong>access</strong>: 允许从API文档过滤参数，Default = “”，具体参阅<a href="http://www.programcreek.com/java-api-examples/index.php?api=io.swagger.core.filter.SwaggerSpecFilter" target="_blank" rel="external">io.swagger.core.filter.SwaggerSpecFilter</a>;<br>⑦<strong>allowMultiple</strong>: 指定参数是否允许接收多个逗号分隔的值, Default = false;<br>⑧<strong>dataType</strong>: 指定数据类型，官方指定允许原始数据类型或类名, Default = “”;<br>⑨<strong>paramType</strong>: 指定参数类型，官方指定参数包括”path”(请求参数的获取@PathVariable),”query”(请求参数的获取@RequestParam),”body”(不常用),”header”(请求参数的获取@ReuqestHeader),”form”(不常用);</3></p>
-<hr>
-<p><strong>@Target(value=METHOD)</strong><br><strong>@Retention(value=RUNTIME)</strong><br><strong>@Inherited</strong><br><strong><code>public @ingerface ApiImplcitParam</code></strong></p>
-<hr>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@ApiImplicitParam(name = &quot;id&quot;, value = &quot;用户ID&quot;, defaultValue = &quot;&quot;, allowableValues = &quot;range[-infinity, 1]&quot;, required = true, allowMultiple = true, dataType = &quot;int&quot;, paramType = &quot;path&quot;)</div></pre></td></tr></table></figure>
 <h3 id="ApiImplicitParams"><a href="#ApiImplicitParams" class="headerlink" title="@ApiImplicitParams"></a>@ApiImplicitParams</h3><blockquote>
 <p><strong><code>@ApiImplicitParams</code></strong>: A list of ApiImplicitParams available to the API operation.</p>
-<hr>
-<p><strong>@Target(value=METHOD)</strong><br><strong>@Retention(value=RUNTIME)</strong><br><strong>@Inherited</strong><br><strong><code>public @ingerface ApiImplcitParams</code></strong></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ApiImplicitParams(&#123;</div><div class="line">    @ApiImplicitParam(name = &quot;id&quot;, value = &quot;用户ID&quot;, paramType = &quot;path&quot;, dataType = &quot;int&quot;),</div><div class="line">    @ApiImplicitParam(name = &quot;userName&quot;,value = &quot;用户名称&quot;,paramType = &quot;form&quot;,dataType = &quot;string&quot;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ApiImplicitParams(&#123;</div><div class="line">    @ApiImplicitParam(name = &quot;id&quot;, value = &quot;用户ID&quot;, paramType = &quot;path&quot;, dataType = &quot;int&quot;),</div><div class="line">    @ApiImplicitParam(name = &quot;userName&quot;,value = &quot;用户名称&quot;,paramType = &quot;form&quot;,dataType = &quot;string&quot;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h3 id="ApiModel"><a href="#ApiModel" class="headerlink" title="@ApiModel"></a>@ApiModel</h3><blockquote>
 <p><strong><code>@ApiModel</code></strong>: 提供有关Swagger models的额外的信息。适用于实体类，而不适用于方法。 Default = “”</p>
 <p>①<strong>value</strong>: 提供给model一个可替代的名称，默认为类名；<br>②<strong>description</strong>:提供给类一个长的描述，Default = “”；<br>③<strong>parent</strong>: 内容为实体继承的父类，用于描述实体的继承关系，Default = java.lang.Void.class；<br>④<strong>discriminator</strong>: 支持模型的继承和多态。用作鉴别符的字段名称，基于该字段，可以鉴别使用哪个子类， Default = “”；<br>⑤<strong>subType</strong>: 继承于该模型的子类集合，Default = {}；<br>⑥<strong>reference</strong>: 指定类型引用，可被覆盖。Default = “”;</p>
@@ -377,9 +368,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@ApiModel(description = &quot;电站基本信息&quot;)</div><div class="line">@Entity</div><div class="line">@JsonInclude(JsonInclude.Include.NON_NULL)</div><div class="line">public class Station implements Serializable &#123;</div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="ApiModelProperty"><a href="#ApiModelProperty" class="headerlink" title="@ApiModelProperty"></a>@ApiModelProperty</h3><blockquote>
 <p><strong><code>@ApiModelProperty</code></strong>: 用于添加或操纵实体的属性；可将<code>@ApiModelProperty</code>注解用于实体的getter方法上，如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;@ApiModel(description = &quot;电站基本信息&quot;)</div><div class="line">@Entity</div><div class="line">@JsonInclude(JsonInclude.Include.NON_NULL)</div><div class="line">public class Station implements Serializable &#123;</div><div class="line">    protected static final long serialVersionUID = 1L;</div><div class="line">    @Id</div><div class="line">    @GeneratedValue</div><div class="line">    protected Long id;</div><div class="line">    // ...</div><div class="line">    @ApiModelProperty(example = &quot;1&quot;, value = &quot;电站ID&quot;)</div><div class="line">    public Long getId() &#123;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@ApiModel(description = &quot;电站基本信息&quot;)</div><div class="line">@Entity</div><div class="line">@JsonInclude(JsonInclude.Include.NON_NULL)</div><div class="line">public class Station implements Serializable &#123;</div><div class="line">    protected static final long serialVersionUID = 1L;</div><div class="line">    @Id</div><div class="line">    @GeneratedValue</div><div class="line">    protected Long id;</div><div class="line">    // ...</div><div class="line">    @ApiModelProperty(example = &quot;1&quot;, value = &quot;电站ID&quot;)</div><div class="line">    public Long getId() &#123;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>①<strong>value</strong>: 该属性的简单描述<br>②<strong>allowableValues</strong>: 该属性允许的限制值；<br>允许用以下三种方式定义:</p>
 <p><1>.类似于<code>allowableValues = &quot;1,2,3,4&quot;</code>(官方给出的是类似于<code>allowableValues = &quot;[1,2,3,4]&quot;</code>，不好用！)；</1></p>
@@ -398,20 +388,13 @@
 <p>可接受的值为“GET”，“HEAD”，“POST”，“PUT”，“DELETE”，“OPTIONS”和“PATCH”。<br>⑦<strong>position</strong><br>⑧<strong>nickname</strong>: Corresponds to the <code>nickname</code> field.<br>The nickname field is used by third-party tools to uniquely identify this operation. In JAX-RS environemnt, this would default to the method name, but can be overridden.</p>
 <p>For Servlets, you must specify this field.</p>
 <p>对应nickname字段。<br>该昵称字段用于第三方工具识别。JAX-RS环境中，这将默认作为方法名，但可覆盖。<br>⑨<strong>produces</strong>、<strong>consumes</strong>、<strong>protocols</strong>、<strong>authorizations</strong>、<strong>hidden</strong><br>⑩<strong>tags</strong>: 定义标签用于逻辑分组，非空时覆盖@Api.value()和@Api.tags()的值，此处为字符串而非集合(官方说法)，实际上，如果定义与@Api.tags()的相同，则无效果，如果不同，会新建标签;</p>
-<blockquote>
-<hr>
-<p><strong>@Target(value=METHOD)</strong><br><strong>@Retention(value=RUNTIME)</strong><br><strong>@Inherited</strong><br><strong><code>public @ingerface ApiOperation</code></strong></p>
-</blockquote>
-<hr>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@ApiOperation(value=&quot;获取用户列表&quot;, notes=&quot;获取所有用户列表&quot;, response = HelloWorld.class, httpMethod = &quot;GET&quot;, produces = MediaType.APPLICATION_JSON_VALUE, position = 1)</div></pre></td></tr></table></figure>
 <h3 id="ApiParam"><a href="#ApiParam" class="headerlink" title="@ApiParam"></a>@ApiParam</h3><blockquote>
 <p><strong><code>@ApiParam</code></strong>:用于描述该API操作接收的参数类型，value用于描述参数，required用于描述是否为必须；<strong>注意</strong><code>@ApiParam</code>只与JAX-RS参数注释一起使用，JAX-RS参数包括:<code>@PathParam</code>,<code>@QueryParam</code>,<code>@HeaderParam</code>,<code>@FormParam</code>和在JAX-RS2中的<code>@BeanParam</code>.</p>
 <p>①<strong>name</strong>: name从字段、方法、参数名派生，可被覆盖。body始终命名为”body”，路径始终命名为其所表示的路径;<br>②<strong>value</strong>: A brief description of the parameter;<br>③<strong>defaultValue</strong>: 描述默认值;<br>④<strong>allowableValues</strong>: 参数可接收值的列表，有如下格式可被接收[1,2,3] || range[1, 5] || range[-infinity, 0];<br>⑤<strong>required</strong>: Specifies if the parameter is required or not.<br>⑥<strong>access</strong>: Default = “”;<br>⑦<strong>allowMultiple</strong>: true || false;</p>
-<p><strong>@Target(value={PARAMETER,METHOD,FIELD})</strong><br><strong>@Retention(value=RUNTIME)</strong><br><strong>@Inherited</strong><br><strong><code>public @interface ApiParam</code></strong></p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@ApiOperation(notes = &quot;user/loadUser.do&quot;,value = &quot;获取用户&quot;, httpMethod = &quot;GET&quot;, produces = MediaType.APPLICATION_JSON_VALUE)</div><div class="line">public Result loadUser(</div><div class="line">    @ApiParam(value = &quot;用户ID&quot;, required = true) @RequestParam Long userId</div><div class="line">)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@ApiOperation(notes = &quot;user/loadUser.do&quot;,value = &quot;获取用户&quot;, httpMethod = &quot;GET&quot;, produces = MediaType.APPLICATION_JSON_VALUE)</div><div class="line">public Result loadUser(</div><div class="line">    @ApiParam(value = &quot;用户ID&quot;, required = true) @RequestParam Long userId</div><div class="line">)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="ApiResponse"><a href="#ApiResponse" class="headerlink" title="@ApiResponse"></a>@ApiResponse</h3><blockquote>
 <p><strong><code>@ApiResponse</code></strong>:<br>①<strong>code</strong>: The HTTP status code of the response.<br>②<strong>message</strong>: 与code对应的人类可读的信息。<br>③<strong>response</strong>: 可选的响应类，描述消息的有效内容,如错误时返回Map形式的User对象,则可以设置response=User.class,responseContainer=”Map”。<br>④<strong>responseContainer</strong>: 可选的response的展示形式,可选值列表为List、Map、Set,设置其他值将被忽略。</p>
 </blockquote>
@@ -437,7 +420,7 @@
 <p><2>. 好多属性在API中定义了，调用其中方法时却没有起到作用，是被覆盖了还是未起作用？定义的意义何在。</2></p>
 <p><3>. @ApiModelProperty在界面的什么地方体现了。</3></p>
 <p>附录:</p>
-<p><a href="http://docs.swagger.io/swagger-core/apidocs/index.html" target="_blank" rel="external">官方文档1</a><br><a href="http://docs.swagger.io/swagger-core/v1.5.0/apidocs/index-all.html" target="_blank" rel="external">官方文档2(详细)</a><br><a href="https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X" target="_blank" rel="external">GitHub官方文档1.5X</a><br><a href="http://editor.swagger.io/" target="_blank" rel="external">在线编辑器,提供部分实例下载</a><br><a href="https://www.gitbook.com/book/huangwenchao/swagger/details" target="_blank" rel="external">如何编写基于OpenAPI规范的API文档</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;</div><div class="line">&gt;---</div><div class="line">## Spring Boot整合Swagger-ui配置使用</div><div class="line">### 引入资源文件</div><div class="line">`build.gradle`中引入配置:</div></pre></td></tr></table></figure></p>
+<p><a href="http://docs.swagger.io/swagger-core/apidocs/index.html" target="_blank" rel="external">官方文档1</a><br><a href="http://docs.swagger.io/swagger-core/v1.5.0/apidocs/index-all.html" target="_blank" rel="external">官方文档2(详细)</a><br><a href="https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X" target="_blank" rel="external">GitHub官方文档1.5X</a><br><a href="http://editor.swagger.io/" target="_blank" rel="external">在线编辑器,提供部分实例下载</a><br><a href="https://www.gitbook.com/book/huangwenchao/swagger/details" target="_blank" rel="external">如何编写基于OpenAPI规范的API文档</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;</div><div class="line">&gt;---</div><div class="line"></div><div class="line">## Spring Boot整合Swagger-ui配置使用</div><div class="line">### 引入资源文件</div><div class="line">`build.gradle`中引入配置:</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p>compile(‘io.springfox:springfox-swagger2:2.6.1’)<br>compile(‘io.springfox:springfox-swagger-ui:2.6.1’)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 实现Swagger配置类:</div></pre></td></tr></table></figure></p>
 <p>package com.tsingyun.XXX.center.config;</p>
@@ -449,7 +432,7 @@
     .apis(RequestHandlerSelectors.basePackage(&quot;com.tsingyun.XXX.center&quot;))
     .paths(PathSelectors.any())
     .build();
-</code></pre> }<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 配置开启swagger</div><div class="line">`application.yml`中配置开启swagger</div></pre></td></tr></table></figure>
+</code></pre> }<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 配置开启swagger</div><div class="line"></div><div class="line">`application.yml`中配置开启swagger</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>swagger:<br> enabled : true<br>```</p>
@@ -590,7 +573,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -600,7 +583,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
