@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="SpringBoot,跨域," />
+  <meta name="keywords" content="Vim,Terminal," />
 
 
 
@@ -84,16 +84,20 @@
 
 
 
-<meta name="description" content="关于跨域">
+<meta name="description" content="简单配置Mac下Vim开发环境">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何解决SpringBoot跨域问题">
-<meta property="og:url" content="http://yoursite.com/2016/12/21/如何解决SpringBoot跨域问题/index.html">
+<meta property="og:title" content="简单配置Mac下Vim开发环境">
+<meta property="og:url" content="http://yoursite.com/2016/12/21/简单配置Mac下Vim开发环境/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
-<meta property="og:description" content="关于跨域">
-<meta property="og:updated_time" content="2016-12-21T10:08:23.000Z">
+<meta property="og:description" content="简单配置Mac下Vim开发环境">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig0.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig1.png">
+<meta property="og:updated_time" content="2016-12-21T15:41:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何解决SpringBoot跨域问题">
-<meta name="twitter:description" content="关于跨域">
+<meta name="twitter:title" content="简单配置Mac下Vim开发环境">
+<meta name="twitter:description" content="简单配置Mac下Vim开发环境">
+<meta name="twitter:image" content="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/21/如何解决SpringBoot跨域问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/21/简单配置Mac下Vim开发环境/"/>
 
 
 
 
 
-  <title> 如何解决SpringBoot跨域问题 | TilKaiのblog </title>
+  <title> 简单配置Mac下Vim开发环境 | TilKaiのblog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/如何解决SpringBoot跨域问题/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/简单配置Mac下Vim开发环境/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="TilKai">
@@ -282,7 +286,7 @@
             
             
               
-                如何解决SpringBoot跨域问题
+                简单配置Mac下Vim开发环境
               
             
           </h1>
@@ -295,7 +299,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T10:21:14+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T23:38:47+08:00">
                 2016-12-21
               </time>
             
@@ -311,8 +315,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/21/如何解决SpringBoot跨域问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/如何解决SpringBoot跨域问题/" itemprop="commentCount"></span>
+                <a href="/2016/12/21/简单配置Mac下Vim开发环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/简单配置Mac下Vim开发环境/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -338,17 +342,36 @@
       
 
       
-        <h1 id="关于跨域"><a href="#关于跨域" class="headerlink" title="关于跨域"></a>关于跨域</h1><a id="more"></a>
-<p>在网络上如果随便去请求其他服务器的资源，执行其他网站的脚本，是不利于自身安全的，于是，处于安全原因，浏览器都遵循着同源原则，拦截不同域名之间的请求。</p>
-<p><strong>详细说明参考:</strong></p>
-<blockquote>
-<p><1>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="external">HTTP access control (CORS)</a></1></p>
-<p><2>. 当它请求的一个资源是从一个与它本身提供的第一个资源的不同的域名时，一个资源会发起一个跨域HTTP请求(Cross-site HTTP request)。<br>比如说，域名A ( <a href="http://domaina.example" target="_blank" rel="external">http://domaina.example</a> ) 的某 Web 应用程序中通过&lt; img&gt;标签引入了域名B( <a href="http://domainb.foo" target="_blank" rel="external">http://domainb.foo</a> ) 站点的某图片资源(<a href="http://domainb.foo/image.jpg)，域名A的那" target="_blank" rel="external">http://domainb.foo/image.jpg)，域名A的那</a> Web 应用就会导致浏览器发起一个跨站 HTTP 请求。<br>在当今的 Web 开发中，使用跨站 HTTP 请求加载各类资源（包括CSS、图片、JavaScript 脚本以及其它类资源），已经成为了一种普遍且流行的方式。<br>正如大家所知，出于安全考虑，浏览器会限制脚本中发起的跨站请求。比如，使用 XMLHttpRequest 对象发起 HTTP 请求就必须遵守同源策略。 具体而言，Web 应用程序能且只能使用 XMLHttpRequest 对象向其加载的源域名发起 HTTP 请求，而不能向任何其它域名发起请求。为了能开发出更强大、更丰富、更安全的Web应用程序，开发人员渴望着在不丢失安全的前提下，Web 应用技术能越来越强大、越来越丰富。比如，可以使用 XMLHttpRequest<br>发起跨站 HTTP 请求。（这段描述跨域不准确，跨域并非浏览器限制了发起跨站请求，而是跨站请求可以正常发起，但是返回结果被浏览器拦截了。最好的例子是CSRF跨站攻击原理，请求是发送到了后端服务器无论是否跨域！注意：有些浏览器不允许从HTTPS的域跨域访问HTTP，比如Chrome和Firefox，这些浏览器在请求还未发出的时候就会拦截请求，这是一个特例。）</2></p>
-</blockquote>
-<p>文／BeeNoisy（简书作者）<br>原文链接：<a href="http://www.jianshu.com/p/f2060a6d6e3b" target="_blank" rel="external">http://www.jianshu.com/p/f2060a6d6e3b</a><br>著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。<br>&gt;</p>
-<h1 id="整理众多解决SpringBoot跨域问题中的几种解决方案"><a href="#整理众多解决SpringBoot跨域问题中的几种解决方案" class="headerlink" title="整理众多解决SpringBoot跨域问题中的几种解决方案"></a>整理众多解决SpringBoot跨域问题中的几种解决方案</h1><h2 id="参考Spring-Boot-之路-6-–允许跨域请求"><a href="#参考Spring-Boot-之路-6-–允许跨域请求" class="headerlink" title="参考Spring Boot 之路[6]–允许跨域请求"></a>参考<a href="http://www.jianshu.com/p/f2060a6d6e3b" target="_blank" rel="external">Spring Boot 之路[6]–允许跨域请求</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package com.tsingyun.XXXX.center.config;</div><div class="line"></div><div class="line">import org.springframework.context.annotation.Bean;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.web.cors.CorsConfiguration;</div><div class="line">import org.springframework.web.cors.UrlBasedCorsConfigurationSource;</div><div class="line">import org.springframework.web.filter.CorsFilter;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by tilkai on 2016/12/21.</div><div class="line"> */</div><div class="line">@Configuration</div><div class="line">public class WebConfig &#123;</div><div class="line"></div><div class="line">    private CorsConfiguration buildConfig() &#123;</div><div class="line">        CorsConfiguration corsConfiguration = new CorsConfiguration();</div><div class="line">        // 允许任何域名</div><div class="line">        corsConfiguration.addAllowedOrigin(&quot;*&quot;);</div><div class="line">        // 允许任何头</div><div class="line">        corsConfiguration.addAllowedHeader(&quot;*&quot;);</div><div class="line">        // 允许任何方法(post、get等)</div><div class="line">        corsConfiguration.addAllowedMethod(&quot;*&quot;);</div><div class="line">        return corsConfiguration;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Bean</div><div class="line">    public CorsFilter corsFilter() &#123;</div><div class="line">        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();</div><div class="line">        source.registerCorsConfiguration(&quot;/**&quot;, buildConfig());</div><div class="line">        return new CorsFilter(source);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="参考Enabling-Cross-Origin-Requests-for-a-RESTful-Web-Service"><a href="#参考Enabling-Cross-Origin-Requests-for-a-RESTful-Web-Service" class="headerlink" title="参考Enabling Cross Origin Requests for a RESTful Web Service"></a>参考<a href="https://spring.io/guides/gs/rest-service-cors/" target="_blank" rel="external">Enabling Cross Origin Requests for a RESTful Web Service</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">package com.tsingyun.XXXX.center.config;</div><div class="line"></div><div class="line">import org.springframework.context.annotation.Bean;</div><div class="line">import org.springframework.context.annotation.Configuration;</div><div class="line">import org.springframework.web.servlet.config.annotation.CorsRegistry;</div><div class="line">import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</div><div class="line">import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by tilkai on 2016/12/21.</div><div class="line"> */</div><div class="line">@Configuration</div><div class="line">public class WebConfig &#123;</div><div class="line"></div><div class="line">    @Bean</div><div class="line">    public WebMvcConfigurer corsConfigurer() &#123;</div><div class="line">        return new WebMvcConfigurerAdapter() &#123;</div><div class="line">            @Override</div><div class="line">            public void addCorsMappings(CorsRegistry registry) &#123;</div><div class="line">                registry.addMapping(&quot;/api/**&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h1 id="简单配置Mac下Vim开发环境"><a href="#简单配置Mac下Vim开发环境" class="headerlink" title="简单配置Mac下Vim开发环境"></a>简单配置Mac下Vim开发环境</h1><a id="more"></a>
+<p>本人最终使用的<a href="https://github.com/wsdjeg/DotFiles" target="_blank" rel="external">适合Java开发的.vimrc</a>这一配置，在此简单介绍几种可能以后需要用到的配置，以备不时之需。<br>现有配置还不尽人意，有新的配置方案再行更新！</p>
+<h2 id="Mac下Vim简单配置-暂时未使用"><a href="#Mac下Vim简单配置-暂时未使用" class="headerlink" title="Mac下Vim简单配置(暂时未使用)"></a>Mac下Vim简单配置(暂时未使用)</h2><p><1>. 查看<code>~/.vimrc</code>文件是否存在，如果存在，备份之；</1></p>
+<p><2>. 执行<code>cp /usr/share/vim/vimrc ~/.vimrc</code>；</2></p>
+<p><3>. 编辑<code>~/.vimrc</code>文件，在文件尾添加如下代码块:</3></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">syntax on</div><div class="line">set nocompatible</div><div class="line">set number</div><div class="line">set autoindent</div><div class="line">set smartindent</div><div class="line">set showmatch</div><div class="line">set hls</div><div class="line">set incsearch</div><div class="line">set shiftwidth=4</div><div class="line">set ts=4</div><div class="line">set ruler</div><div class="line">set mousehide</div><div class="line">set mouse=v</div><div class="line">set encoding=utf-8</div><div class="line">set fileencodings=utf-8,chinese,latin-1</div><div class="line">set visualbell</div><div class="line">if has(&quot;gui_running&quot;)</div><div class="line">-1set cursorline</div><div class="line">-1colorscheme murphy</div><div class="line">-1set background=dark</div><div class="line">-1set guifont=YaHei\ Consolas\ Hybrid:h14</div><div class="line">-1highlight Cursorline guibg=grey15</div><div class="line">-1set guioptions-=T</div><div class="line">-1set fileformat=unix</div><div class="line">-1set lines=49</div><div class="line">-1set columns=140</div><div class="line">-1set mouse=a</div><div class="line">endif</div></pre></td></tr></table></figure>
+<p>简单的配置完成！</p>
+<h2 id="适合Java开发的-vimrc配置-暂时配合Solarized配色方案使用"><a href="#适合Java开发的-vimrc配置-暂时配合Solarized配色方案使用" class="headerlink" title="适合Java开发的.vimrc配置(暂时配合Solarized配色方案使用)"></a>适合Java开发的.vimrc配置(暂时配合Solarized配色方案使用)</h2><p><a href="https://github.com/wsdjeg/DotFiles" target="_blank" rel="external">适合Java开发的.vimrc配置GitHub链接</a></p>
+<p><1>. 首先clone项目:</1></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/wsdjeg/DotFiles.git</div></pre></td></tr></table></figure>
+<p><2>. 赋予<code>install.sh</code>执行权限并将该执行文件与vim做关联:</2></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +x install.sh</div><div class="line">./install.sh vim  # or ./install.sh nvim</div></pre></td></tr></table></figure>
+<p><code>./install.sh vim</code>的执行结果如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Move ~/.vimrc to ~/.vimrc_back</div><div class="line">Linking ~/.vim -&gt; /Users/tilkai/GitHub_Tools/DotFiles/config/nvim</div></pre></td></tr></table></figure>
+<p><3>. 使用vim打开任意文本文件，此时将会执行:</3></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">vi vimTest0.txt</div><div class="line">:!git clone https://github.com/Shougo/dein.vim /Users/tilkai/.cache/vimfiles/repos/github.com/Shougo/dein.vim</div><div class="line">Cloning into &apos;/Users/tilkai/.cache/vimfiles/repos/github.com/Shougo/dein.vim&apos;...</div><div class="line">remote: Counting objects: 3847, done.</div><div class="line">remote: Compressing objects: 100% (72/72), done.</div><div class="line">remote: Total 3847 (delta 27), reused 0 (delta 0), pack-reused 3762</div><div class="line">Receiving objects: 100% (3847/3847), 732.36 KiB | 120.00 KiB/s, done.</div><div class="line">Resolving deltas: 100% (2203/2203), done.</div><div class="line">Checking connectivity... done.</div><div class="line"></div><div class="line">Press ENTER or type command to continue</div></pre></td></tr></table></figure>
+<p>以上配置完成！</p>
+<h2 id="Terminal并Vim、ls配置Solarized配色方案"><a href="#Terminal并Vim、ls配置Solarized配色方案" class="headerlink" title="Terminal并Vim、ls配置Solarized配色方案"></a>Terminal并Vim、ls配置Solarized配色方案</h2><p><a href="http://www.vpsee.com/2013/09/use-the-solarized-color-theme-on-mac-os-x-terminal/" target="_blank" rel="external">参考:在 Mac OS X 终端里使用 Solarized 配色方案</a></p>
+<p><1>. GitHub下载源码:</1></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git://github.com/altercation/solarized.git</div></pre></td></tr></table></figure>
+<p><2>. 本人只是使用了其提供的Terminal配色方案，目录如下:</2></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">tilkai @ localhost in ~/GitHub_Tools/solarized/osx-terminal.app-colors-solarized on git:master x [23:22:36] </div><div class="line">$ ls -l</div><div class="line">total 40</div><div class="line">-rw-r--r--  1 tilkai  staff  3330 12 21 22:45 README.md</div><div class="line">-rw-r--r--  1 tilkai  staff  5478 12 21 22:45 Solarized Dark ansi.terminal</div><div class="line">-rw-r--r--  1 tilkai  staff  5504 12 21 22:45 Solarized Light ansi.terminal</div><div class="line">drwxr-xr-x  5 tilkai  staff   170 12 21 22:45 xterm-256color</div></pre></td></tr></table></figure>
+<p>双击两个<code>.terminal</code>文件导入到Terminal配置中，在终端–》偏好设置中对Dark配置主题进行微调:<br>①. 文本、粗体文本改为绿色；<br>②. 光标透明度改为80%</p>
+<p>配色方案配置完成！</p>
+<p>最终配置如下:</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig.png" alt="TerminalConfig"></h2><h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig0.png" alt="TerminalConfig0"></h2><p><img src="http://ohx3k2vj3.bkt.clouddn.com/TerminalConfig1.png" alt="TerminalConfig1"></p>
+<p>(如需完全配置Solarized配色方案，参考给定原创blog链接！)</p>
+<pre><code>补充其他好的复杂配置:
+[https://github.com/geekan/source-insight-vim](https://github.com/geekan/source-insight-vim)
+</code></pre>
       
     </div>
 
@@ -371,9 +394,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+            <a href="/tags/Vim/" rel="tag"># Vim</a>
           
-            <a href="/tags/跨域/" rel="tag"># 跨域</a>
+            <a href="/tags/Terminal/" rel="tag"># Terminal</a>
           
         </div>
       
@@ -382,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/18/SpringDataJPA学习整理/" rel="next" title="SpringDataJPA学习整理">
-                <i class="fa fa-chevron-left"></i> SpringDataJPA学习整理
+              <a href="/2016/12/21/Vi-Vim-键盘图及其基本命令/" rel="next" title="Vi(Vim)键盘图及其基本命令">
+                <i class="fa fa-chevron-left"></i> Vi(Vim)键盘图及其基本命令
               </a>
             
           </div>
@@ -391,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/21/Vi-Vim-键盘图及其基本命令/" rel="prev" title="Vi(Vim)键盘图及其基本命令">
-                Vi(Vim)键盘图及其基本命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -409,10 +428,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/21/如何解决SpringBoot跨域问题/"
-     data-title="如何解决SpringBoot跨域问题"
+        <div class="ds-share flat" data-thread-key="2016/12/21/简单配置Mac下Vim开发环境/"
+     data-title="简单配置Mac下Vim开发环境"
      data-content=""
-     data-url="http://yoursite.com/2016/12/21/如何解决SpringBoot跨域问题/">
+     data-url="http://yoursite.com/2016/12/21/简单配置Mac下Vim开发环境/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -439,8 +458,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/21/如何解决SpringBoot跨域问题/"
-           data-title="如何解决SpringBoot跨域问题" data-url="http://yoursite.com/2016/12/21/如何解决SpringBoot跨域问题/">
+      <div class="ds-thread" data-thread-key="2016/12/21/简单配置Mac下Vim开发环境/"
+           data-title="简单配置Mac下Vim开发环境" data-url="http://yoursite.com/2016/12/21/简单配置Mac下Vim开发环境/">
       </div>
     
   </div>
@@ -530,7 +549,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于跨域"><span class="nav-number">1.</span> <span class="nav-text">关于跨域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整理众多解决SpringBoot跨域问题中的几种解决方案"><span class="nav-number">2.</span> <span class="nav-text">整理众多解决SpringBoot跨域问题中的几种解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考Spring-Boot-之路-6-–允许跨域请求"><span class="nav-number">2.1.</span> <span class="nav-text">参考Spring Boot 之路[6]–允许跨域请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考Enabling-Cross-Origin-Requests-for-a-RESTful-Web-Service"><span class="nav-number">2.2.</span> <span class="nav-text">参考Enabling Cross Origin Requests for a RESTful Web Service</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单配置Mac下Vim开发环境"><span class="nav-number">1.</span> <span class="nav-text">简单配置Mac下Vim开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac下Vim简单配置-暂时未使用"><span class="nav-number">1.1.</span> <span class="nav-text">Mac下Vim简单配置(暂时未使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适合Java开发的-vimrc配置-暂时配合Solarized配色方案使用"><span class="nav-number">1.2.</span> <span class="nav-text">适合Java开发的.vimrc配置(暂时配合Solarized配色方案使用)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Terminal并Vim、ls配置Solarized配色方案"><span class="nav-number">1.3.</span> <span class="nav-text">Terminal并Vim、ls配置Solarized配色方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">1.5.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
             
 
           </div>
