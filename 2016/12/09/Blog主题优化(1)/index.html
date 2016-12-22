@@ -99,7 +99,8 @@
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud4.png">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud5.png">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud6.png">
-<meta property="og:updated_time" content="2016-12-22T03:27:52.000Z">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/hexo-generator-searchdb.png">
+<meta property="og:updated_time" content="2016-12-22T03:51:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blog主题优化(1)">
 <meta name="twitter:description" content="NexT主题的页脚官方Logo修改">
@@ -145,16 +146,6 @@
   
 
 
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?0747e892dcea1b9ae090b93da8faaa6a";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -241,9 +232,32 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
   
 </nav>
 
@@ -391,6 +405,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">leancloud_visitors:</div><div class="line">  enable: true</div><div class="line">  app_id: joaeuuc4hsqudUUwx4gIvGF6-gzGzoHsz</div><div class="line">  app_key: E9UJsJpw1omCHuS22PdSpKoh</div></pre></td></tr></table></figure>
 <p>这个时候重新生成部署Hexo博客，应该就可以正常使用文章阅读量统计的功能了。需要特别说明的是：记录文章访问量的唯一标识符是文章的发布日期以及文章的标题，因此请确保这两个数值组合的唯一性，如果你更改了这两个数值，会造成文章阅读数值的清零重计。</p>
 <h3 id="leancloud更详细配置参考"><a href="#leancloud更详细配置参考" class="headerlink" title="leancloud更详细配置参考:"></a>leancloud更详细配置参考:</h3><p><a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a></p>
+<h2 id="添加百度-谷歌-本地-自定义站点内容搜索"><a href="#添加百度-谷歌-本地-自定义站点内容搜索" class="headerlink" title="添加百度/谷歌/本地 自定义站点内容搜索"></a>添加百度/谷歌/本地 自定义站点内容搜索</h2><p>安装 hexo-generator-searchdb，在站点的根目录(如我的站点根目录:<code>/Users/tilkai/GitHub_Blog/blog</code>)下执行以下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-searchdb --save</div></pre></td></tr></table></figure>
+<p>执行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># tilkai @ localhost in ~/GitHub_Blog/blog [11:43:28]</div><div class="line">$ npm install hexo-generator-searchdb --save</div><div class="line"></div><div class="line">&gt; hexo-util@0.6.0 postinstall /Users/tilkai/GitHub_Blog/blog/node_modules/hexo-generator-searchdb/node_modules/hexo-util</div><div class="line">&gt; npm run build:highlight</div><div class="line"></div><div class="line"></div><div class="line">&gt; hexo-util@0.6.0 build:highlight /Users/tilkai/GitHub_Blog/blog/node_modules/hexo-generator-searchdb/node_modules/hexo-util</div><div class="line">&gt; node scripts/build_highlight_alias.js &gt; highlight_alias.json</div><div class="line"></div><div class="line">hexo-site@0.0.0 /Users/tilkai/GitHub_Blog/blog</div><div class="line">└─┬ hexo-generator-searchdb@1.0.3</div><div class="line">  └── hexo-util@0.6.0</div></pre></td></tr></table></figure>
+<p>编辑 站点配置文件(博客根目录下的_config.yml)，新增以下内容到任意位置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">  path: search.xml</div><div class="line">  field: post</div><div class="line">  format: html</div><div class="line">  limit: 10000</div></pre></td></tr></table></figure>
+<p>配置完成后效果图:<br><img src="http://ohx3k2vj3.bkt.clouddn.com/hexo-generator-searchdb.png" alt="hexoGeneratorSearchdb"></p>
 
       
     </div>
@@ -575,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题的页脚官方Logo修改"><span class="nav-number">1.</span> <span class="nav-text">NexT主题的页脚官方Logo修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源链接"><span class="nav-number">2.</span> <span class="nav-text">资源链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo首页设置展示部分信息"><span class="nav-number">3.</span> <span class="nav-text">Hexo首页设置展示部分信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo推荐加入代码手动截断"><span class="nav-number">3.1.</span> <span class="nav-text">Hexo推荐加入代码手动截断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法"><span class="nav-number">3.2.</span> <span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用七牛云存储给Blog添加图床"><span class="nav-number">4.</span> <span class="nav-text">使用七牛云存储给Blog添加图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用LeanCloud给Blog添加阅读次数统计功能"><span class="nav-number">5.</span> <span class="nav-text">使用LeanCloud给Blog添加阅读次数统计功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeanCloud给Blog添加阅读次数统计功能基本配置"><span class="nav-number">5.1.</span> <span class="nav-text">LeanCloud给Blog添加阅读次数统计功能基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leancloud更详细配置参考"><span class="nav-number">5.2.</span> <span class="nav-text">leancloud更详细配置参考:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题的页脚官方Logo修改"><span class="nav-number">1.</span> <span class="nav-text">NexT主题的页脚官方Logo修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源链接"><span class="nav-number">2.</span> <span class="nav-text">资源链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo首页设置展示部分信息"><span class="nav-number">3.</span> <span class="nav-text">Hexo首页设置展示部分信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo推荐加入代码手动截断"><span class="nav-number">3.1.</span> <span class="nav-text">Hexo推荐加入代码手动截断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法"><span class="nav-number">3.2.</span> <span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用七牛云存储给Blog添加图床"><span class="nav-number">4.</span> <span class="nav-text">使用七牛云存储给Blog添加图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用LeanCloud给Blog添加阅读次数统计功能"><span class="nav-number">5.</span> <span class="nav-text">使用LeanCloud给Blog添加阅读次数统计功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeanCloud给Blog添加阅读次数统计功能基本配置"><span class="nav-number">5.1.</span> <span class="nav-text">LeanCloud给Blog添加阅读次数统计功能基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leancloud更详细配置参考"><span class="nav-number">5.2.</span> <span class="nav-text">leancloud更详细配置参考:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加百度-谷歌-本地-自定义站点内容搜索"><span class="nav-number">6.</span> <span class="nav-text">添加百度/谷歌/本地 自定义站点内容搜索</span></a></li></ol></div>
             
 
           </div>
@@ -733,6 +754,130 @@
 
   
   
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
 
   
 
