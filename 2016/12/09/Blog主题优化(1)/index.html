@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,Blog,NexT," />
+  <meta name="keywords" content="Hexo,NexT,Blog," />
 
 
 
@@ -92,7 +92,14 @@
 <meta property="og:description" content="NexT主题的页脚官方Logo修改">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/hexoNexTFotter.png">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/homeSplit.png">
-<meta property="og:updated_time" content="2016-12-22T02:26:32.000Z">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud0.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud1.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud2.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud3.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud4.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud5.png">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/leancloud6.png">
+<meta property="og:updated_time" content="2016-12-22T03:27:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blog主题优化(1)">
 <meta name="twitter:description" content="NexT主题的页脚官方Logo修改">
@@ -376,6 +383,14 @@
 <h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p><strong>参考:</strong><br><a href="http://theme-next.iissnan.com/faqs.html#%E9%A6%96%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E7%AB%A0%E6%91%98%E5%BD%95" target="_blank" rel="external">如何设置「阅读全文」？</a>其中还给出了设置首页和归档页面展示自定义文章篇数的操作.</p>
 <h2 id="使用七牛云存储给Blog添加图床"><a href="#使用七牛云存储给Blog添加图床" class="headerlink" title="使用七牛云存储给Blog添加图床"></a>使用七牛云存储给Blog添加图床</h2><p><a href="http://www.jianshu.com/p/ec2c8acf63cd" target="_blank" rel="external">Hexo文章图片存储选七牛（当然支持MD都可以）</a>教程很详细,从注册到配置使用的教程都有。</p>
 <p>后期可整理给七牛云图片链接加防盗链。</p>
+<h2 id="使用LeanCloud给Blog添加阅读次数统计功能"><a href="#使用LeanCloud给Blog添加阅读次数统计功能" class="headerlink" title="使用LeanCloud给Blog添加阅读次数统计功能"></a>使用LeanCloud给Blog添加阅读次数统计功能</h2><h3 id="LeanCloud给Blog添加阅读次数统计功能基本配置"><a href="#LeanCloud给Blog添加阅读次数统计功能基本配置" class="headerlink" title="LeanCloud给Blog添加阅读次数统计功能基本配置"></a>LeanCloud给Blog添加阅读次数统计功能基本配置</h3><p>参考<a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a></p>
+<p><1>. <a href="https://leancloud.cn/" target="_blank" rel="external">leancloud官网</a>注册账号并登录；</1></p>
+<p><2>. 打开控制台<br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud0.png" alt="leancloud0"></2></p>
+<p><3>. 创建新应用<br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud1.png" alt="leancloud1"></3></p>
+<p><4>. 新建Class用来专门保存我们博客的文章访问量等数据<br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud2.png" alt="leancloud2"><br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud3.png" alt="leancloud3"><br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud4.png" alt="leancloud4"><br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud5.png" alt="leancloud5"><br><strong>注意，此处的Class名称必须为Counter</strong><br><img src="http://ohx3k2vj3.bkt.clouddn.com/leancloud6.png" alt="leancloud6"><br>复制AppID以及AppKey并在NexT主题的_config.yml文件中我们相应的位置填入即可，正确配置之后文件内容像这个样子:</4></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">leancloud_visitors:</div><div class="line">  enable: true</div><div class="line">  app_id: joaeuuc4hsqudUUwx4gIvGF6-gzGzoHsz</div><div class="line">  app_key: E9UJsJpw1omCHuS22PdSpKoh</div></pre></td></tr></table></figure>
+<p>这个时候重新生成部署Hexo博客，应该就可以正常使用文章阅读量统计的功能了。需要特别说明的是：记录文章访问量的唯一标识符是文章的发布日期以及文章的标题，因此请确保这两个数值组合的唯一性，如果你更改了这两个数值，会造成文章阅读数值的清零重计。</p>
+<h3 id="leancloud更详细配置参考"><a href="#leancloud更详细配置参考" class="headerlink" title="leancloud更详细配置参考:"></a>leancloud更详细配置参考:</h3><p><a href="https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="external">为NexT主题添加文章阅读量统计功能</a></p>
 
       
     </div>
@@ -401,9 +416,9 @@
           
             <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           
-            <a href="/tags/Blog/" rel="tag"># Blog</a>
-          
             <a href="/tags/NexT/" rel="tag"># NexT</a>
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
           
         </div>
       
@@ -560,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题的页脚官方Logo修改"><span class="nav-number">1.</span> <span class="nav-text">NexT主题的页脚官方Logo修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源链接"><span class="nav-number">2.</span> <span class="nav-text">资源链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo首页设置展示部分信息"><span class="nav-number">3.</span> <span class="nav-text">Hexo首页设置展示部分信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo推荐加入代码手动截断"><span class="nav-number">3.1.</span> <span class="nav-text">Hexo推荐加入代码手动截断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法"><span class="nav-number">3.2.</span> <span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用七牛云存储给Blog添加图床"><span class="nav-number">4.</span> <span class="nav-text">使用七牛云存储给Blog添加图床</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT主题的页脚官方Logo修改"><span class="nav-number">1.</span> <span class="nav-text">NexT主题的页脚官方Logo修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源链接"><span class="nav-number">2.</span> <span class="nav-text">资源链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo首页设置展示部分信息"><span class="nav-number">3.</span> <span class="nav-text">Hexo首页设置展示部分信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo推荐加入代码手动截断"><span class="nav-number">3.1.</span> <span class="nav-text">Hexo推荐加入代码手动截断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法"><span class="nav-number">3.2.</span> <span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用七牛云存储给Blog添加图床"><span class="nav-number">4.</span> <span class="nav-text">使用七牛云存储给Blog添加图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用LeanCloud给Blog添加阅读次数统计功能"><span class="nav-number">5.</span> <span class="nav-text">使用LeanCloud给Blog添加阅读次数统计功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeanCloud给Blog添加阅读次数统计功能基本配置"><span class="nav-number">5.1.</span> <span class="nav-text">LeanCloud给Blog添加阅读次数统计功能基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leancloud更详细配置参考"><span class="nav-number">5.2.</span> <span class="nav-text">leancloud更详细配置参考:</span></a></li></ol></li></ol></div>
             
 
           </div>
