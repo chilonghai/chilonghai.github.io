@@ -92,7 +92,7 @@
 <meta property="og:description" content="参考:">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/ShiroAuthentication.png">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/shiroAuthentication1.png">
-<meta property="og:updated_time" content="2016-12-13T08:35:06.000Z">
+<meta property="og:updated_time" content="2016-12-22T02:28:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache-Shiro身份认证">
 <meta name="twitter:description" content="参考:">
@@ -346,20 +346,20 @@
 <h2 id="认证主体Authenticating-Subjects"><a href="#认证主体Authenticating-Subjects" class="headerlink" title="认证主体Authenticating Subjects"></a>认证主体Authenticating Subjects</h2><p>验证一个主体分三步:</p>
 <blockquote>
 <p><a href="http://shiro.apache.org/authentication.html#Authentication-Step1%3ACollecttheSubject%27sprincipalsandcredentials" target="_blank" rel="external">Step 1: Collect the Subject’s principals and credentials</a><br>获取主体的身份和凭证;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;// 根据用户名、密码获取令牌(token)</div><div class="line">&gt;UsernamePasswordToken token = new UsernamePasswordToken(username, password);</div><div class="line">&gt;// 可选</div><div class="line">&gt;token.setRememberMe(true);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 根据用户名、密码获取令牌(token)</div><div class="line">UsernamePasswordToken token = new UsernamePasswordToken(username, password);</div><div class="line">// 可选</div><div class="line">token.setRememberMe(true);</div></pre></td></tr></table></figure>
 <blockquote>
 <p><a href="http://shiro.apache.org/authentication.html#Authentication-Step2%3ASubmittheprincipalsandcredentials" target="_blank" rel="external">Step 2: Submit the principals and credentials</a><br>提交主体的身份和凭证;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;// 得到当前执行的用户</div><div class="line">&gt;Subject currentUser = SecurityUtils.getSubject();</div><div class="line">&gt;// 进行认证</div><div class="line">&gt;currentUser.login(token);</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 得到当前执行的用户</div><div class="line">Subject currentUser = SecurityUtils.getSubject();</div><div class="line">// 进行认证</div><div class="line">currentUser.login(token);</div></pre></td></tr></table></figure>
 <blockquote>
 <p><a href="http://shiro.apache.org/authentication.html#Authentication-Step3%3AHandlingSuccessorFailure" target="_blank" rel="external">Step 3: Handling Success or Failure</a><br>提交成功, 允许访问; 否则重新尝试身份验证或者阻止访问;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;try &#123;</div><div class="line">&gt;    currentUser.login(token);</div><div class="line">&gt;&#125; catch ( AuthenticationException ae ) &#123;</div><div class="line">&gt;    //unexpected error?</div><div class="line">&gt;    //Handel error</div><div class="line">&gt;&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-<p>Step4:logout<br>当主体完成与应用程序交互, 可以调用subject.logout()方法放弃所有的身份信息,  删除所有的身份信息和Shiro会话;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;currentUser.logout();</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">    currentUser.login(token);</div><div class="line">&#125; catch ( AuthenticationException ae ) &#123;</div><div class="line">    //unexpected error?</div><div class="line">    //Handel error</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Step4:logout<br>当主体完成与应用程序交互, 可以调用subject.logout()方法放弃所有的身份信息,  删除所有的身份信息和Shiro会话;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">currentUser.logout();</div></pre></td></tr></table></figure>
 <p><1>. 认证主体包括两部分:</1></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Principals：身份。可以是用户名，邮件，手机号码等等，用来标识一个登录主体身份；</div><div class="line">Credentials：凭证。常见有密码，数字证书等等。</div></pre></td></tr></table></figure>
 <p><2>. Shiro可以从指定ini文件或从数据库中指定一个认证主体, 如使用ini文件指定认证主体:</2></p>
@@ -514,7 +514,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -524,7 +524,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/12/16/简单SVG学习整理/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
 <meta property="og:description" content="简单SVG语法">
-<meta property="og:updated_time" content="2016-12-16T10:42:16.000Z">
+<meta property="og:updated_time" content="2016-12-22T02:13:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单SVG学习整理">
 <meta name="twitter:description" content="简单SVG语法">
@@ -338,11 +338,9 @@
       
 
       
-        <h1 id="简单SVG语法"><a href="#简单SVG语法" class="headerlink" title="简单SVG语法"></a>简单SVG语法</h1><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="圆形、矩形、椭圆等简单代码"><a href="#圆形、矩形、椭圆等简单代码" class="headerlink" title="圆形、矩形、椭圆等简单代码"></a>圆形、矩形、椭圆等简单代码</h2><blockquote>
-<ul>
+        <h1 id="简单SVG语法"><a href="#简单SVG语法" class="headerlink" title="简单SVG语法"></a>简单SVG语法</h1><h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="圆形、矩形、椭圆等简单代码"><a href="#圆形、矩形、椭圆等简单代码" class="headerlink" title="圆形、矩形、椭圆等简单代码"></a>圆形、矩形、椭圆等简单代码</h2><ul>
 <li>圆形简单代码</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;circle cx = &quot;50&quot; cy = &quot;40&quot; r = &quot;40&quot; style = &quot;stroke : green; stroke-width : 4; stroke-opaciry : 0.9; fill : yellow; fill-opacity : 1; opacity : 1;&quot; /&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
@@ -355,70 +353,56 @@
 <li>fill-opacity: 填充透明度;</li>
 <li>opacity: 整体透明度;</li>
 </ol>
-<blockquote>
 <ul>
 <li>圆角矩形简单代码</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;rect x = &quot;50&quot; y = &quot;20&quot; rx = &quot;20&quot; ry = &quot;20&quot; width = &quot;300&quot; hieght = &quot;100&quot; style = &quot;fill : rgh(0,0,255); stroke-width : 3; stroke : rgb(0,0,0); fill-opacity : 0.1; strok-opacity : 0.9;&quot; /&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
 <li>rx、ry: 矩形圆角x轴、y轴方向的半径;</li>
 </ol>
-<blockquote>
 <ul>
 <li>椭圆简单代码</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;ellipse cx = &quot;200&quot; cy = &quot;80&quot; rx = &quot;100&quot; ry = &quot;50&quot; .../&gt;</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="线、文本与多边形"><a href="#线、文本与多边形" class="headerlink" title="线、文本与多边形"></a>线、文本与多边形</h2><blockquote>
-<ul>
+<h2 id="线、文本与多边形"><a href="#线、文本与多边形" class="headerlink" title="线、文本与多边形"></a>线、文本与多边形</h2><ul>
 <li>直线</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;line x1 = &quot;0&quot; y1 = &quot;0&quot; x2 = &quot;200&quot; y2 = &quot;200&quot; /&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
 <li>x1、y1: 直线起始x、y轴坐标;</li>
 <li>x2、y2: 直线终止x、y轴坐标;</li>
 </ol>
-<blockquote>
 <ul>
 <li>折线</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;polyline points = &quot;20,20 40,25 60,40 80,120 120,140 200,180&quot;</div><div class="line">style = &quot;fill : none; stroke : black; stroke-wiedth : 3;&quot; /&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
 <li>points 定义折线段的端点坐标，坐标与坐标间用空格分隔;</li>
 <li>fill : none; 定义折线交叉后的封闭区域不会填充颜色;</li>
 </ol>
-<blockquote>
 <ul>
 <li>文本</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;text x = &quot;80&quot; y = &quot;100&quot; fill = &quot;blue&quot; transform = &quot;rotate(20 150,120)&quot;&gt;多行文本 - 第零行</div><div class="line">  &lt;tspan x = &quot;100&quot; y = &quot;120&quot; transform = &quot;rotate(20 150,120)&quot;&gt;多行文本 - 第一行&lt;/tspan&gt;</div><div class="line">  &lt;tspan x = &quot;100&quot; y = &quot;140&quot; transform = &quot;rotate(20 150,120)&quot;&gt;多行文本 - 第二行&lt;/tspan&gt;</div><div class="line">&lt;/text&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
 <li>transform = “rotate(20 150,120)” 定义以150,120坐标点为旋转中心,旋转20度.</li>
 </ol>
-<blockquote>
 <ul>
 <li>多边形</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polygon points = &quot;240,48 352,396 58,180 422,180 128,396&quot; style = &quot;fill : green; stroke : red; stroke-width : 3; fill-rule : nonzero;&quot;&gt;&lt;/polygon&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
 <li>fill-rule : 定义填充规则,用于判断一个点是否在图形内部的算法,可选值为nonzero,evenodd,inherit;</li>
 </ol>
-<h2 id="简单路径"><a href="#简单路径" class="headerlink" title="简单路径"></a>简单路径</h2><blockquote>
-<ul>
+<h2 id="简单路径"><a href="#简单路径" class="headerlink" title="简单路径"></a>简单路径</h2><ul>
 <li>path</li>
 </ul>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;path d=&quot;M600 0 L500 200 L700 200 Z&quot;/&gt;</div></pre></td></tr></table></figure>
 <p><strong>关键字</strong></p>
 <ol>
@@ -561,7 +545,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -571,7 +555,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
