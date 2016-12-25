@@ -84,18 +84,28 @@
 
 
 
-<meta name="description" content="JPA实体管理器">
+<meta name="description" content="Spring Data JPA基本概述
+基于ORM框架、JPA规范封装的JPA应用框架, 内部提供了增删改查等常用功能且易于扩展.关于ORM框架, 是指的关系映射模型, 像Hibernate、Mybatis等都属于ORM框架.JPA规范需要ORM框架来做实现.
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Spring Data提供了一整套数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringDataJPA学习整理">
 <meta property="og:url" content="http://yoursite.com/2016/12/18/SpringDataJPA学习整理/index.html">
 <meta property="og:site_name" content="TilKaiのblog">
-<meta property="og:description" content="JPA实体管理器">
+<meta property="og:description" content="Spring Data JPA基本概述
+基于ORM框架、JPA规范封装的JPA应用框架, 内部提供了增删改查等常用功能且易于扩展.关于ORM框架, 是指的关系映射模型, 像Hibernate、Mybatis等都属于ORM框架.JPA规范需要ORM框架来做实现.
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Spring Data提供了一整套数据">
+<meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/JPAInterface.png">
 <meta property="og:image" content="http://ohx3k2vj3.bkt.clouddn.com/SpringDataJpa1.png">
-<meta property="og:updated_time" content="2016-12-18T15:36:30.000Z">
+<meta property="og:updated_time" content="2016-12-25T10:37:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringDataJPA学习整理">
-<meta name="twitter:description" content="JPA实体管理器">
-<meta name="twitter:image" content="http://ohx3k2vj3.bkt.clouddn.com/SpringDataJpa1.png">
+<meta name="twitter:description" content="Spring Data JPA基本概述
+基于ORM框架、JPA规范封装的JPA应用框架, 内部提供了增删改查等常用功能且易于扩展.关于ORM框架, 是指的关系映射模型, 像Hibernate、Mybatis等都属于ORM框架.JPA规范需要ORM框架来做实现.
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Spring Data提供了一整套数据">
+<meta name="twitter:image" content="http://ohx3k2vj3.bkt.clouddn.com/JPAInterface.png">
 
 
 
@@ -362,7 +372,20 @@
       
 
       
-        <h2 id="JPA实体管理器"><a href="#JPA实体管理器" class="headerlink" title="JPA实体管理器"></a>JPA实体管理器</h2><a id="more"></a>
+        <h2 id="Spring-Data-JPA基本概述"><a href="#Spring-Data-JPA基本概述" class="headerlink" title="Spring Data JPA基本概述"></a>Spring Data JPA基本概述</h2><blockquote>
+<p>基于ORM框架、JPA规范封装的JPA应用框架, 内部提供了增删改查等常用功能且易于扩展.<br>关于ORM框架, 是指的关系映射模型, 像Hibernate、Mybatis等都属于ORM框架.<br>JPA规范需要ORM框架来做实现.</p>
+</blockquote>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring Data提供了一整套数据访问层(DAO)的解决方案, 致力于减少数据访问层的开发量.它使用Repository接口为基础, 所有继承该接口的Interface都被Spring管理. 该接口作为标识接口, 用来控制domain模型.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring Data可以让我们只定义接口, 只要遵循Spring Data规范, 就无需写实现类.</p>
+<h2 id="Spring-Data-JPA接口"><a href="#Spring-Data-JPA接口" class="headerlink" title="Spring Data JPA接口"></a>Spring Data JPA接口</h2><p> <img src="http://ohx3k2vj3.bkt.clouddn.com/JPAInterface.png" alt="JPAInterface"></p>
+<h3 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h3><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repository<t, id="">是最顶层接口, 是一个空接口, 目的是为了统一所有的Repository的类型, 且能让组件扫描时自动识别.</t,></p>
+<h3 id="CrudRepository"><a href="#CrudRepository" class="headerlink" title="CrudRepository"></a>CrudRepository</h3><p> Repository的子接口, 提供CRUD操作功能.</p>
+<h3 id="PagingAndSortingRepository"><a href="#PagingAndSortingRepository" class="headerlink" title="PagingAndSortingRepository"></a>PagingAndSortingRepository</h3><p> CrudRepository的子接口, 添加了分页、排序功能.</p>
+<h3 id="JpaRepository"><a href="#JpaRepository" class="headerlink" title="JpaRepository"></a>JpaRepository</h3><p> PagingAndSortingRepository的子接口, 增加批处理功能.</p>
+<h3 id="JpaSpecificationExecutor"><a href="#JpaSpecificationExecutor" class="headerlink" title="JpaSpecificationExecutor"></a>JpaSpecificationExecutor</h3><p> 用来做复杂查询的接口.</p>
+<h2 id="Repository层简单的代码实现"><a href="#Repository层简单的代码实现" class="headerlink" title="Repository层简单的代码实现"></a>Repository层简单的代码实现</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by Tilkai on 16/12/15.</div><div class="line"> * 继承CrudRepository接口,</div><div class="line"> * &lt;参数为实体名称, 主键类型&gt;</div><div class="line"> */</div><div class="line">public interface EvaluateHistoryRepository extends CrudRepository&lt;EvaluateHistory, Long&gt; &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Server层代码实现"><a href="#Server层代码实现" class="headerlink" title="Server层代码实现"></a>Server层代码实现</h2><h3 id="Server层接口"><a href="#Server层接口" class="headerlink" title="Server层接口"></a>Server层接口</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import com.tsingyun.pvdm.center.domain.pvdm.EvaluateHistory;</div><div class="line"></div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by Tilkai on 16/12/15.</div><div class="line"> */</div><div class="line">public interface EvaluateHistoryService &#123;</div><div class="line"></div><div class="line">    EvaluateHistory saveEvaluateHistory(EvaluateHistory evaluateHistory);</div><div class="line"></div><div class="line">    Iterable&lt;EvaluateHistory&gt; saveEvaluateHistorys(Iterable&lt;EvaluateHistory&gt; evaluateHistoryIterable);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Server层实现类"><a href="#Server层实现类" class="headerlink" title="Server层实现类"></a>Server层实现类</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">import com.tsingyun.pvdm.center.collect.server.repo.EvaluateHistoryRepository;</div><div class="line">import com.tsingyun.pvdm.center.domain.pvdm.EvaluateHistory;</div><div class="line">import org.springframework.beans.factory.annotation.Autowired;</div><div class="line">import org.springframework.stereotype.Service;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by Tilkai on 16/12/15.</div><div class="line"> */</div><div class="line">@Service</div><div class="line">public class EvaluateHistoryServiceImpl implements EvaluateHistoryService &#123;</div><div class="line"></div><div class="line">    @Autowired</div><div class="line">    EvaluateHistoryRepository evaluateHistoryRepository;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public EvaluateHistory saveEvaluateHistory(EvaluateHistory evaluateHistory) &#123;</div><div class="line">        return evaluateHistoryRepository.save(evaluateHistory);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Iterable&lt;EvaluateHistory&gt; saveEvaluateHistorys(Iterable&lt;EvaluateHistory&gt; evaluateHistoryIterable) &#123;</div><div class="line">        return evaluateHistoryRepository.save(evaluateHistoryIterable);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="JPA实体管理器"><a href="#JPA实体管理器" class="headerlink" title="JPA实体管理器"></a>JPA实体管理器</h2><a id="more"></a>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实体管理器可以理解为数据库表和实体之间交互的桥梁，通过调用实体管理器相关方法可以把实体持久化到数据库中，也可以把数据库中记录打包成实体对象。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实体具有生命周期，这个生命周期指实体从创建到销毁在实体管理器方法管理下呈现出的状态。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下图描述了实体生命周期以及实体管理器如何控制各个状态的实体:<br><img src="http://ohx3k2vj3.bkt.clouddn.com/SpringDataJpa1.png" alt="实体状态转换图"><br>实体生命周期包括四个状态:</p>
 <blockquote>
 <p>新建状态<br>托管状态<br>游离状态<br>删除状态</p>
@@ -533,7 +556,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -543,7 +566,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -578,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JPA实体管理器"><span class="nav-number">1.</span> <span class="nav-text">JPA实体管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单代码实现增删改查"><span class="nav-number">2.</span> <span class="nav-text">简单代码实现增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何将实体属性分散到两个-或以上-表格中存放"><span class="nav-number">3.</span> <span class="nav-text">如何将实体属性分散到两个(或以上)表格中存放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内嵌实体"><span class="nav-number">3.1.</span> <span class="nav-text">内嵌实体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一对一、一对多、多对多映射"><span class="nav-number">4.</span> <span class="nav-text">一对一、一对多、多对多映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对一映射"><span class="nav-number">4.1.</span> <span class="nav-text">一对一映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多映射"><span class="nav-number">4.2.</span> <span class="nav-text">一对多映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多映射"><span class="nav-number">4.3.</span> <span class="nav-text">多对多映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于级联问题"><span class="nav-number">4.4.</span> <span class="nav-text">关于级联问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒加载"><span class="nav-number">4.5.</span> <span class="nav-text">懒加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JPA实体继承"><span class="nav-number">5.</span> <span class="nav-text">JPA实体继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一表策略"><span class="nav-number">5.1.</span> <span class="nav-text">单一表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接表策略"><span class="nav-number">5.2.</span> <span class="nav-text">连接表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每个类一个表策略"><span class="nav-number">5.3.</span> <span class="nav-text">每个类一个表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！"><span class="nav-number">5.4.</span> <span class="nav-text">JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Data-JPA基本概述"><span class="nav-number">1.</span> <span class="nav-text">Spring Data JPA基本概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Data-JPA接口"><span class="nav-number">2.</span> <span class="nav-text">Spring Data JPA接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Repository"><span class="nav-number">2.1.</span> <span class="nav-text">Repository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CrudRepository"><span class="nav-number">2.2.</span> <span class="nav-text">CrudRepository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PagingAndSortingRepository"><span class="nav-number">2.3.</span> <span class="nav-text">PagingAndSortingRepository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JpaRepository"><span class="nav-number">2.4.</span> <span class="nav-text">JpaRepository</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JpaSpecificationExecutor"><span class="nav-number">2.5.</span> <span class="nav-text">JpaSpecificationExecutor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repository层简单的代码实现"><span class="nav-number">3.</span> <span class="nav-text">Repository层简单的代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server层代码实现"><span class="nav-number">4.</span> <span class="nav-text">Server层代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Server层接口"><span class="nav-number">4.1.</span> <span class="nav-text">Server层接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Server层实现类"><span class="nav-number">4.2.</span> <span class="nav-text">Server层实现类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JPA实体管理器"><span class="nav-number">5.</span> <span class="nav-text">JPA实体管理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单代码实现增删改查"><span class="nav-number">6.</span> <span class="nav-text">简单代码实现增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何将实体属性分散到两个-或以上-表格中存放"><span class="nav-number">7.</span> <span class="nav-text">如何将实体属性分散到两个(或以上)表格中存放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内嵌实体"><span class="nav-number">7.1.</span> <span class="nav-text">内嵌实体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一对一、一对多、多对多映射"><span class="nav-number">8.</span> <span class="nav-text">一对一、一对多、多对多映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对一映射"><span class="nav-number">8.1.</span> <span class="nav-text">一对一映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多映射"><span class="nav-number">8.2.</span> <span class="nav-text">一对多映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多映射"><span class="nav-number">8.3.</span> <span class="nav-text">多对多映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于级联问题"><span class="nav-number">8.4.</span> <span class="nav-text">关于级联问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒加载"><span class="nav-number">8.5.</span> <span class="nav-text">懒加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JPA实体继承"><span class="nav-number">9.</span> <span class="nav-text">JPA实体继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单一表策略"><span class="nav-number">9.1.</span> <span class="nav-text">单一表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接表策略"><span class="nav-number">9.2.</span> <span class="nav-text">连接表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每个类一个表策略"><span class="nav-number">9.3.</span> <span class="nav-text">每个类一个表策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！"><span class="nav-number">9.4.</span> <span class="nav-text">JPA实体继承后面详细补充，以上关于实体继承的整理可能存在认知错误！</span></a></li></ol></li></ol></div>
             
 
           </div>
